@@ -1,0 +1,74 @@
+.map {
+    height: 100%;
+    border-radius: 0.5em;
+    flex-grow: 1;
+    font-family: $f-header !important;
+    font-weight: 200;
+}
+
+.marker {
+  background-image: url('map-marker.svg');
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.mapboxgl-popup {
+  max-width: 30em !important;
+  font-size: 2.5vh !important;
+  color: $bg1;
+  top: -55px;
+
+  .mapboxgl-popup-content {
+    text-align: center;
+    background-color: $col-anna;
+  }
+
+  .mapboxgl-popup-tip {
+      display: none;
+  }
+}
+
+#nwi-map-nav {
+    color: #000;
+    background-color: $bg1;
+	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px 0 0 10px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+.map-link {
+    text-transform: capitalize;
+    flex: 0;
+    cursor: pointer;
+    height: 2em;
+    line-height: 2em;
+    font-weight: 300;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.map-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#link-accommodations {
+    border-radius: 0 4px 4px 0;
+}
+
+#link-wedding {
+    border-right: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+}
+
+.active {
+    color: $col-anna;
+}

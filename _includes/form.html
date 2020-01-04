@@ -1,0 +1,66 @@
+<form id="rsvp">
+    <p class="bridesmaid">Hello, who's here to RSVP?</p>
+    <br/>
+    <fieldset>
+        <input id="name"                name="name" type="text">
+        <input id="entree"              name="entree" type="text">
+        <input id="diet"                name="diet" type="text">
+        <input id="restrictions"        name="restrictions" type="text">
+        <input id="guest"               name="guest" type="text">
+
+        <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false">Your Name</span><span>&nbsp;and I would like my entrée to be</span>
+        <select id="entree-sur">
+            <option>Entrée</option>
+            <option>Beef</option>
+            <option>Chicken</option>
+            <option>Fish</option>
+            <option>Vegetarian</option>
+        </select><span>.</span>
+        <br/>
+        <br/>
+        <span class="bridesmaid">Do you have any dietary restrictions?</span>
+        <br/>
+        <select id="diet-sur">
+            <option>Nope</option>
+            <option>Yes</option>
+        </select><span class="decision"><span class="choice">.</span><span class="choice">, I need to avoid&nbsp;<span id="restrictions-sur" contenteditable="true" spellcheck="false">Dietary Restrictions</span>.</span></span>
+        <br/>
+        <br/>
+        <span class="bridesmaid">Planning on bringing anyone?</span>
+        <br/>
+        <select id="guest-sur">
+            <option>Nope</option>
+            <option>Yes</option>
+        </select><span class="decision"><span class="choice">.</span><span class="choice">.<span class="bridesmaid">&nbsp;Awesome! Let's get their info too.</span></span></span>
+    </fieldset>
+    <fieldset id="guest-field" class="fieldset-hidden-in-the-html">
+        <input id="guest-name"          name="guest_name" type="text">
+        <input id="guest-entree"        name="guest_entree" type="text">
+        <input id="guest-diet"          name="guest_diet" type="text">
+        <input id="guest-restrictions"  name="guest_restrictions" type="text">
+
+        <br/>
+        <span>My guest's name is&nbsp;</span><span id="guest-name-sur" contenteditable="true" spellcheck="false">Guest's Name</span><span>&nbsp;and they would like</span>
+        <select id="guest-entree-sur">
+            <option>Entrée</option>
+            <option>Beef</option>
+            <option>Chicken</option>
+            <option>Fish</option>
+            <option>Vegetarian</option>
+        </select><span>&nbsp;for dinner.</span>
+        <br/>
+        <br/>
+        <span class="bridesmaid">Do they have any dietary restrictions?</span>
+        <br/>
+        <select id="guest-diet-sur" class="switch">
+            <option>Nope</option>
+            <option>Yes</option>
+        </select><span class="decision"><span class="choice">.</span><span class="choice">, they need to avoid&nbsp;<span id="guest-restrictions-sur" contenteditable="true" spellcheck="false">Guest's Dietary Restrictions</span>.</span></span>
+        <br/>
+        <br/>
+    </fieldset>
+
+    <div class="submit-field">
+        <input id="submit-form" type="submit" value="RSVP">
+    </div>
+</form>

@@ -1,0 +1,183 @@
+#parallax-container {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    perspective: 8px;
+    perspective-origin: center;
+    scroll-snap-type: y mandatory;
+}
+
+.foreground {
+    position: absolute;
+    width: 100%;
+    transform-origin: center 50vh;
+
+    img {
+        position: absolute;
+    }
+}
+
+.depth-1 {
+    transform: translateZ(1px) scale(0.875);
+    z-index: 99;
+}
+
+.depth-2 {
+    transform: translateZ(2px) scale(0.75);
+}
+
+.depth-3 {
+    transform: translateZ(3px) scale(0.625);
+}
+
+.depth-4 {
+    transform: translateZ(4px) scale(0.5);
+}
+
+.foreground-image {
+    position: relative;
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+%foreground-layout {
+    padding-left: $outside-padding;
+    padding-right: $outside-padding;
+}
+
+.left {
+    @extend %foreground-layout;
+    justify-content: flex-start;
+}
+
+.center {
+    @extend %foreground-layout;
+    justify-content: center;
+}
+
+.right {
+    @extend %foreground-layout;
+    justify-content: flex-end;
+}
+
+#buffer-overlay {
+    height: 15vh;
+    padding-left: $nav-padding;
+    padding-top: 1em;
+    font-size: 2em;
+
+    span:first-of-type {
+        font-family: $f-header;
+        text-transform: uppercase;
+        opacity: 0%;
+    }
+}
+
+#buffer-202 {
+    height: 15.9vh;
+}
+
+#buffer-146 {
+    height: 149.3vh;
+}
+
+#buffer-mapbox {
+    height: 244.6vh;
+}
+
+#buffer-132 {
+    height: 495.9vh;
+}
+
+#buffer-109 {
+    height: 532.15vh;
+}
+
+#buffer-22 {
+    height: 816vh;
+}
+
+#buffer-57 {
+    height: 797.5vh;
+}
+
+#img-202 {
+    height: 90vh;
+    width: 100%;
+
+    img {
+        bottom: 0;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translate(-50%, 5%) scale(0.25);
+    }
+}
+
+#img-146 {
+    height: 80vh;
+    width: 30%;
+
+    img {
+        bottom: 0;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translate(-50.5%, 3.4%) scale(0.16);
+    }
+}
+
+#img-mapbox {
+    height: 80vh;
+    width: 100%;
+}
+
+#img-132 {
+    height: 80vh;
+    width: 60%;
+
+    img {
+        bottom: 0;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translate(-49.5%, 0%) scale(0.16);
+    }
+}
+
+#img-109 {
+    height: 102.5vh;
+    width: 100%;
+
+    img {
+        bottom: 0;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translate(-50%, 0%) scale(0.24);
+    }
+}
+
+#img-22 {
+    height: 90vh;
+    width: 60vh;
+
+    img {
+        bottom: 0;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translate(-50%, 0%) scale(0.12);
+    }
+}
+
+#img-57 {
+    height: 102.5vh - $nav-height;
+    width: 100%;
+    border-radius: 0.5em 0.5em 0 0;
+
+    img {
+        bottom: 0;
+        left: 50%;
+        transform-origin: bottom center;
+        transform: translate(-50%, 3%) scale(0.235);
+    }
+}

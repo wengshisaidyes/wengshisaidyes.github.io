@@ -1,0 +1,70 @@
+<form id="test-form">
+
+  <div>
+    <label>First Name</label>
+    <input type="text" name="first_name" required>
+  </div>
+
+  <div>
+    <label>Last Name</label>
+    <input type="text" name="last_name" required>
+  </div>
+
+  <div>
+    <label>Entree</label>
+    <input type="text" name="entree" required>
+  </div>
+
+  <div>
+    <label>Diet</label>
+    <input type="text" name="diet" required>
+  </div>
+
+  <div>
+    <label>Plus One?</label>
+    <input type="checkbox" name="plus_1" required>
+  </div>
+
+  <div>
+    <label>First Name</label>
+    <input type="text" name="plus_first_name" required>
+  </div>
+
+  <div>
+    <label>Last Name</label>
+    <input type="text" name="plus_last_name" required>
+  </div>
+
+  <div>
+    <label>Entree</label>
+    <input type="text" name="plus_entree" required>
+  </div>
+
+  <div>
+    <label>Diet</label>
+    <input type="text" name="plus_diet" required>
+  </div>
+
+  <div>
+    <button type="submit"id="submit-form">Submit</button>
+  </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="jquery.serialize-object.min.js"></script>
+<script>
+  var $form = $('form#test-form'),
+    url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
+
+  $('#submit-form').on('click', function(e) {
+    e.preventDefault();
+    var jqxhr = $.ajax({
+      url: url,
+      method: "GET",
+      dataType: "json",
+      data: $form.serializeObject()
+  }).done(
+      // do something
+    );
+  })
+</script>

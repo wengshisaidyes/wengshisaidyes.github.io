@@ -1,0 +1,140 @@
+$col-form-bg: $col-text;
+$col-form: $bg1;
+$col-form-input: $col-dan;
+
+#rsvp-pane {
+    position: fixed;
+    top: 0;
+    left: 100vw;
+    width: $pane-width;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $col-form-bg;
+    color: $col-form;
+    padding-top: 5vh;
+    padding-left: $outside-padding;
+    padding-right: $outside-padding;
+}
+
+%prevent-default {
+    background-color: $col-form-bg;
+    color: $col-form;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    font-family: $f-header;
+    font-weight: 200;
+    font-size: 1em;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#rsvp {
+
+    font-size: 1.25em;
+    line-height: 1.5em;
+
+    // Form elements
+    input[type="text"] {
+        @extend %prevent-default;
+        position: absolute;
+        visibility: hidden;
+        top: 0;
+        right: 0;
+        display: inline-block;
+    }
+
+    select {
+        @extend %prevent-default;
+        color: $col-form-input;
+        border-bottom: 1px solid $col-form-input;
+        display: inline-block;
+        text-align: center;
+
+        option {
+            width: max-content;
+        }
+    }
+
+    span[contenteditable="true"] {
+        @extend %prevent-default;
+        color: $col-form-input;
+        border-bottom: 1px solid $col-form-input;
+        min-height: 1.5em;
+        min-width: 5ch;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    .empty { // For the editable span above, needs to not disappear
+        padding-right: 4ch !important; // this is not an ideal use of important!
+    }
+
+    .empty + span::before {
+        content: "\00a0";
+    }
+
+    input[type="submit"] {
+        font-size: 0.75em;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        border: 1px solid #00a676aa;
+        background-color: $col-form-bg;
+        color: $col-form;
+        border-radius: 0.2em;
+        height: 2em;
+        padding-left: 1em;
+        padding-right: 1em;
+        transition: background-color 0.3s;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: $col-form-input;
+    }
+
+    input[type="submit"]:active {
+        background-color: #00a676aa;
+    }
+}
+
+.decision {
+    position: relative;
+}
+
+.choice {
+    display: inline-block;
+    width: 0;
+    line-height: 0;
+    opacity: 0%;
+    transition: none;
+}
+
+.chosen {
+    width: auto;
+    line-height: inherit;
+    position: relative;
+    opacity: 100%;
+    transition: opacity 0.3s;
+}
+
+fieldset {
+    @extend %prevent-default;
+    transition: opacity 0.3s;
+    display: block;
+    opacity: 100%;
+}
+
+.fieldset-hidden-in-the-html {
+    opacity: 0%;
+    height: 0;
+    visibility: hidden;
+}
+
+.submit-field {
+    display: flex;
+    padding-top: 1.5em;
+}

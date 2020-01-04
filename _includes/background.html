@@ -1,0 +1,40 @@
+<div class="background">
+    {% for bkg in site.bkg-content %}
+        {% if bkg.empty %}
+            <div class="gap snap" id="snap-{{ bkg.name }}" style="height: {{ bkg.gap }}"></div>
+        {% else %}
+            <div class="snap" id="snap-{{ bkg.name }}">
+                <div class="gap nav-spacer"></div>
+                <div class="content-wrapper" id="content-{{ bkg.name }}">
+                    {% for parallax in site.data.parallax %}
+                        {% if parallax.name == bkg.name %}
+                            {% assign side = parallax.type %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    {% unless side %}
+                        {% assign side = "left" %}
+                    {% endunless %}
+                    {% case side %}
+                        {% when "left" %}
+                            <div class="placeholder"></div>
+                            <div class="content">
+                                {{ bkg.content | markdownify }}
+                            </div>
+                        {% when "right" %}
+                            <div class="content">
+                                {{ bkg.content | markdownify }}
+                            </div>
+                            <div class="placeholder"></div>
+                        {% else %}
+                            {% if bkg.name == "footer" %}
+                                <div id="footer">
+                                    {{ bkg.content | markdownify }}
+                                </div>
+                            {% endif %}
+                    {% endcase %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

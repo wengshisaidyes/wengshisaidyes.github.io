@@ -1,0 +1,92 @@
+$bg1:               #fff;
+
+$col-text:          #222;
+$col-anna:          #92374d;
+$col-maid1:         #eaadad;
+$col-dan:           #00a676;
+
+$col-text-diff:     #ddd;
+$col-anna-diff:     #6dc8b1;
+$col-maid1-diff:    #155252;
+$col-dan-diff:      #ff5989;
+
+$col-maid2:         #b78278;
+
+$f-header: 'Work Sans', sans-serif;
+$f-hand: 'Caveat', cursive;
+
+body {
+    font-family: $f-header;
+    font-weight: 200;
+    color: $col-text;
+}
+
+h1, h2, h3, h4 {
+    font-weight: inherit;
+}
+
+h2, h3, h4 {
+    font-family: $f-header;
+    font-weight: 300;
+}
+
+em {
+    font-weight: 300;
+    font-style: normal;
+}
+
+#navigation-bar {
+    color: $col-text-diff;
+
+    a:hover {
+        color: $col-maid1-diff;
+    }
+
+    .rolled-over {
+        color: $col-maid1-diff;
+        border-bottom: 1px solid $col-maid1-diff;
+    }
+}
+
+a, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.foreground-image {
+        background: #eaadad;
+}
+
+.hand {
+    font-family: $f-hand;
+}
+
+.scrawl-cw {
+    position: relative;
+    display: inline-block;
+    transform-origin: bottom right;
+    transform: rotate(3deg);
+}
+
+.scrawl-ccw {
+    position: relative;
+    display: inline-block;
+    transform-origin: bottom left;
+    transform: rotate(-3deg);
+}
+
+.bg1 {
+    background-color: $bg1;
+}
+
+.bridesmaid {
+    color: $col-maid1;
+}
+
+.dan {
+    color: $col-dan;
+}
+
+.anna {
+    color: $col-anna;
+}

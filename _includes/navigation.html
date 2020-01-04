@@ -1,0 +1,16 @@
+<section id="navigation-bar" class="overlay slider">
+    <h1>Dan & Anna</h1>
+    <nav class="spacer">
+        {% for item in site.data.navigation %}
+            <span class="link" id="link-{{ item.name | downcase }}">
+                {{ item.name }}
+                <!--<div class="mask">
+                    <span>{{ item.name }}</span>
+                </div>-->
+            </span>
+        {% endfor %}
+    </nav>
+</section>
+<section id="rsvp-pane" class="overlay slider">
+    {% include form.html %}
+</section>
