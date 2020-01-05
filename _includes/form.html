@@ -1,5 +1,5 @@
 <form id="rsvp">
-    <p class="bridesmaid">Hello, who's here to RSVP?</p>
+    <p class="bridesmaid">Ready to RSVP?</p>
     <br/>
     <fieldset>
         <input id="name"                name="name" type="text">
@@ -21,7 +21,7 @@
         <span class="bridesmaid">Do you have any dietary restrictions?</span>
         <br/>
         <select id="diet-sur">
-            <option>Nope</option>
+            <option>No</option>
             <option>Yes</option>
         </select><span class="decision"><span class="choice">.</span><span class="choice">, I need to avoid&nbsp;<span id="restrictions-sur" contenteditable="true" spellcheck="false">Dietary Restrictions</span>.</span></span>
         <br/>
@@ -29,9 +29,9 @@
         <span class="bridesmaid">Planning on bringing anyone?</span>
         <br/>
         <select id="guest-sur">
-            <option>Nope</option>
+            <option>No</option>
             <option>Yes</option>
-        </select><span class="decision"><span class="choice">.</span><span class="choice">.<span class="bridesmaid">&nbsp;Awesome! Let's get their info too.</span></span></span>
+        </select><span class="decision"><span class="choice">.</span><span class="choice">.<span class="bridesmaid">&nbsp;Awesome! Let's get their information too.</span></span></span>
     </fieldset>
     <fieldset id="guest-field" class="fieldset-hidden-in-the-html">
         <input id="guest-name"          name="guest_name" type="text">
@@ -53,14 +53,14 @@
         <span class="bridesmaid">Do they have any dietary restrictions?</span>
         <br/>
         <select id="guest-diet-sur" class="switch">
-            <option>Nope</option>
+            <option>No</option>
             <option>Yes</option>
         </select><span class="decision"><span class="choice">.</span><span class="choice">, they need to avoid&nbsp;<span id="guest-restrictions-sur" contenteditable="true" spellcheck="false">Guest's Dietary Restrictions</span>.</span></span>
         <br/>
         <br/>
     </fieldset>
-
     <div class="submit-field">
         <input id="submit-form" type="submit" value="RSVP">
     </div>
+    <button class="close" type="button" name="button">X</button>
 </form>

@@ -1,6 +1,7 @@
 $outside-padding: 3vw;
 $nav-padding: 5vw;
-$nav-height: 15vh;
+$nav-gap: 5vh;
+$nav-height: 3*$nav-gap;
 
 * {
     box-sizing: border-box;
@@ -88,16 +89,18 @@ h3, h4 {
         margin-top: 1em;
     }
 
-    h3, h4, p {
-        margin-bottom: 0.25em;
+    h3, p {
+        margin-bottom: 0.5em;
     }
 
     h4 {
         margin-top: 0.5em;
+        margin-botom: 0.25em;
         margin-left: $nav-padding / 2;
     }
 
     h4 ~ p {
+        // not sure what this is for...
         margin-left: $nav-padding / 2;
     }
 }
@@ -119,7 +122,7 @@ h3, h4 {
 }
 
 #content-when {
-    font-size: 3em;
+    font-size: 2.5em;
 
     .placeholder {
         width: 30%;
@@ -145,6 +148,12 @@ h3, h4 {
         @extend .scrawl-ccw;
         @extend .bridesmaid;
         margin: 0;
+    }
+    h4 {
+        @extend .hand;
+        @extend .scrawl-ccw;
+        @extend .anna;
+        margin-top: 0.5em;
     }
 }
 

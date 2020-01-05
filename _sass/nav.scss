@@ -1,4 +1,4 @@
-$pane-width: 45vw;
+$pane-width: 50vw;
 
 .overlay {
     position: fixed;
@@ -14,13 +14,14 @@ $pane-width: 45vw;
     top: 0;
     left: 0;
     width: 100vw;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: $nav-gap;
+    padding-bottom: $nav-gap;
     padding-left: $nav-padding;
     padding-right: $nav-padding;
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: $nav-height;
 
     h1 {
         text-align: left;

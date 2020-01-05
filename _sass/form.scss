@@ -1,4 +1,4 @@
-$col-form-bg: $col-text;
+$col-form-bg: $col-anna;
 $col-form: $bg1;
 $col-form-input: $col-dan;
 
@@ -8,14 +8,12 @@ $col-form-input: $col-dan;
     left: 100vw;
     width: $pane-width;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background-color: $col-form-bg;
     color: $col-form;
-    padding-top: 5vh;
+    padding-top: $nav-height;
     padding-left: $outside-padding;
     padding-right: $outside-padding;
+    overflow-y: auto;
 }
 
 %prevent-default {
@@ -35,6 +33,7 @@ $col-form-input: $col-dan;
 
     font-size: 1.25em;
     line-height: 1.5em;
+    height: 100%;
 
     // Form elements
     input[type="text"] {
@@ -76,14 +75,13 @@ $col-form-input: $col-dan;
         content: "\00a0";
     }
 
-    input[type="submit"] {
+    input[type="submit"], button {
         font-size: 0.75em;
         -moz-appearance: none;
         -webkit-appearance: none;
-        border: 1px solid #00a676aa;
+        border: 1px solid $col-form-input;
         background-color: $col-form-bg;
         color: $col-form;
-        border-radius: 0.2em;
         height: 2em;
         padding-left: 1em;
         padding-right: 1em;
@@ -92,7 +90,17 @@ $col-form-input: $col-dan;
         cursor: pointer;
     }
 
-    input[type="submit"]:hover {
+    input[type="submit"] {
+        border-radius: 0.2em;
+    }
+
+    button {
+        border-radius: 1em;
+        width: 2em;
+        text-align: center;
+    }
+
+    input[type="submit"]:hover, button:hover {
         background-color: $col-form-input;
     }
 
@@ -135,6 +143,10 @@ fieldset {
 }
 
 .submit-field {
-    display: flex;
-    padding-top: 1.5em;
+    position: fixed;
+    top: $nav-gap;
+}
+
+.close {
+    @extend .submit-field;
 }

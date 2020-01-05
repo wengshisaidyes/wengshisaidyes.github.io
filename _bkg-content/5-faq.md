@@ -7,24 +7,20 @@ empty: false
 ---
 ## FAQ
 
-### Why isn't my question in the FAQ?
-Well, for one I don't know your questions; I'm not omniscient. Secondly, Dan and Anna haven't gotten around to filling this out yet.  
+### What is the dress code?
+The dress code is semi-formal.  
 
+### Do you have a wedding registry?
+Your presence on our special day is all we ask. If you would like to give a gift to help us celebrate, we will be forever thankful for a contribution to our honeymoon fund. Thank you!  
 
-### Do you have any questions, Steve?
-Why, yes, yes I do: What questions are frequently asked, and do they belong in the FAQ?  
+### Is there parking at the venue?
+Yes, parking is available at the venue and at the hotel.
 
+### Will the reception be open bar?
+Yes! If you are driving, please drink responsibly. We also arranged for a shuttle bus between the venue and the Comfort Inn & Suites in Bowmanville. Check out the Accommodations section for details on how to reserve with the group rate!
 
-### Can I see a longer answer with subpoints?
-Sure thing boss.
-Some questions might require a more detailed explanation, covered under multiple headers.  
+### Can you accommodate dietary restrictions?
+Yes! There is a section for you to describe any dietary restrictions in the RSVP form.
 
-#### Does it look nice when the header is indented?
-I think it looks pretty nice, but thats subjective.  
-
-#### What's an alternative solution?
-We can just change the font size or weight if they like that better.
-
-
-### What do the questions look like when they follow a detailed answer?
-They look like this question.  
+### Do you have a wedding hashtag so we can tag photos?
+Yes! #wengshisaidyes
