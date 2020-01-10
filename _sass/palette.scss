@@ -4,11 +4,13 @@ $col-text:          #222;
 $col-anna:          #92374d;
 $col-maid1:         #eaadad;
 $col-dan:           #00a676;
+$col-highlight:     #ffd780;
 
 $col-text-diff:     #ddd;
 $col-anna-diff:     #6dc8b1;
 $col-maid1-diff:    #155252;
 $col-dan-diff:      #ff5989;
+$col-high-diff:     rgb(0, 40, 127);
 
 $col-maid2:         #b78278;
 
@@ -43,13 +45,22 @@ em {
 #navigation-bar {
     color: $col-text-diff;
 
-    a:hover {
-        color: $col-maid1-diff;
+    #link-rsvp {
+        border-radius: 0.2em;
+        height: 2em;
+        padding-left: 1em;
+        padding-right: 1em;
+        border: 1px solid $col-high-diff;
+        transition: background-color 0.3s;
+    }
+
+    #link-rsvp:hover {
+        background-color: $col-high-diff;
     }
 
     .rolled-over {
-        color: $col-maid1-diff;
-        border-bottom: 1px solid $col-maid1-diff;
+        color: #000;
+        background-color: $col-anna-diff;
     }
 }
 

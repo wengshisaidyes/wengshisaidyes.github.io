@@ -8,7 +8,13 @@ var $form = $('form#rsvp'),
 rsvp.click(function() {
     $( "#navigation-bar" ).toggleClass( "slide" );
     $( "#parallax-container" ).toggleClass( "slide" );
-    $( "#rsvp-pane" ).toggleClass( "slide-pane" );
+    pane = $( "#rsvp-pane" ).toggleClass( "slide-pane" );
+    $( "#submit-form" ).val('✉ Send');
+    if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ) && !pane.hasClass( "slide-pane" ))  {
+        //im too lazy to do the right logic
+    } else {
+        $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
+    }
     rsvp.toggleClass( "rolled-over" );
 });
 
@@ -48,10 +54,26 @@ $( "#link-faq" ).click(function() {
 // Span input handling
 $( "span[contenteditable='true']" ).keyup(function(e) {
     input = $( this );
+    input.prop("edited", true);
     if (input.text().length < 1) {
         input.addClass( "empty" );
     } else {
         input.removeClass( "empty" );
+    }
+});
+
+$( "span[contenteditable='true']" ).keydown(function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        $( this ).blur();
+    }
+});
+
+$( "span[contenteditable='true']" ).click(function() {
+    input = $( this );
+    if (!input.prop("edited")) {
+        input.text("");
+        input.keyup();
     }
 });
 
@@ -87,8 +109,12 @@ $( "select" ).each(function() {
 });
 
 // Form event
-$('#submit-form').on('click', function(e) {
+$( "#submit-form" ).on('click', function(e) {
     e.preventDefault();
+
+    $( "#submit-form" ).val('...');
+    $( "#rsvp fieldset" ).prop("disabled", true);
+    $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
 
     $( "#name" ).val( $( "#name-sur" ).text() );
     $( "#entree" ).val( $( "#entree-sur" ).val() );
@@ -109,7 +135,15 @@ $('#submit-form').on('click', function(e) {
         method: "GET",
         dataType: "json",
         data: $form.serializeObject()
-    }).done(
-        // do something
-    );
+    }).done( function() {
+        // this does not validate success!
+        $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
+        $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
+        $( "#rsvp fieldset" ).prop("disabled", false);
+        $( "#submit-form" ).val('✔');
+    });
+});
+
+$( '.close' ).click(function(e) {
+    rsvp.click();
 });

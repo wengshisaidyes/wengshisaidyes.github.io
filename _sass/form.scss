@@ -1,6 +1,7 @@
 $col-form-bg: $col-anna;
 $col-form: $bg1;
-$col-form-input: $col-dan;
+$col-form-input: #ffd780;
+//ed254e
 
 #rsvp-pane {
     position: fixed;
@@ -30,10 +31,11 @@ $col-form-input: $col-dan;
 }
 
 #rsvp {
-
     font-size: 1.25em;
     line-height: 1.5em;
     height: 100%;
+    border-top: 1px solid $col-form-input;
+    padding-top: $nav-gap;
 
     // Form elements
     input[type="text"] {
@@ -75,7 +77,9 @@ $col-form-input: $col-dan;
         content: "\00a0";
     }
 
-    input[type="submit"], button {
+    input[type="submit"] {
+        font-family: $f-header;
+        font-weight: 300;
         font-size: 0.75em;
         -moz-appearance: none;
         -webkit-appearance: none;
@@ -88,24 +92,15 @@ $col-form-input: $col-dan;
         transition: background-color 0.3s;
         user-select: none;
         cursor: pointer;
-    }
-
-    input[type="submit"] {
         border-radius: 0.2em;
     }
 
-    button {
-        border-radius: 1em;
-        width: 2em;
-        text-align: center;
-    }
-
-    input[type="submit"]:hover, button:hover {
+    input[type="submit"]:hover {
         background-color: $col-form-input;
     }
 
-    input[type="submit"]:active {
-        background-color: #00a676aa;
+    input[type="submit"]:active, .close:active {
+        opacity: 0.6;
     }
 }
 
@@ -136,17 +131,58 @@ fieldset {
     opacity: 100%;
 }
 
+.field-wrapper {
+    transition: opacity 0.3s;
+}
+
 .fieldset-hidden-in-the-html {
     opacity: 0%;
     height: 0;
     visibility: hidden;
 }
 
+.fieldset-lurking {
+    opacity: 0.6;
+}
+
 .submit-field {
-    position: fixed;
+    position: absolute;
     top: $nav-gap;
+    left: $outside-padding;
 }
 
 .close {
-    @extend .submit-field;
+    font-size: 0.75em;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    position: absolute;
+    top: $nav-gap;
+    right: $outside-padding;
+    user-select: none;
+    cursor: pointer;
+    width: 2em;
+    height: 2em;
+}
+
+.close::before, .close::after {
+    position: absolute;
+    content: ' ';
+    background-color: $col-form-input;
+    width: 0.1em;
+    left: 1em - 0.05em;
+    height: 2em;
+    border-radius: 1px;
+    transition: background-color 0.3s;
+}
+
+.close::before {
+  transform: rotate(45deg);
+}
+
+.close::after {
+  transform: rotate(-45deg);
+}
+
+.close:hover::after, .close:hover::before {
+    background-color: $col-form-input;
 }
