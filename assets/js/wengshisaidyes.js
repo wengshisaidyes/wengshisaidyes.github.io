@@ -125,6 +125,7 @@ $( "#submit-form" ).on('click', function(e) {
     $( "#guest-entree" ).val( $( "#guest-entree-sur" ).val() );
     $( "#guest-diet" ).val( $( "#guest-diet-sur" ).val() + $( "#guest-diet-sur-details" ).text() );
     $( "#guest-restrictions" ).val( $( "#guest-restrictions-sur" ).text() );
+    $( "#song" ).val( $( "#song-sur" ).text() );
 
     $( "input[type='text']" ).each(function() {
       console.log($( this ).val());

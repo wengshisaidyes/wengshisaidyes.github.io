@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZHJheXJzIiwiYSI6ImNrM3FjazBpejAwOTQzam51aGR1Y
 
 var map = new mapboxgl.Map({
   container: 'nwi-map',
-  style: 'mapbox://styles/drayrs/ck3qc6nb37k7r1cru0qe29swc',
+  style: 'mapbox://styles/drayrs/ck58qmky20y1t1cnwat40g5y2',
   center: [-78.887, 44.139],
   zoom: 9,
   scrollZoom: false,
