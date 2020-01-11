@@ -170,7 +170,7 @@
 }
 
 #img-57 {
-    height: 102.5vh - $nav-height;
+    height: 102.5vh - 2*$nav-gap;
     width: 100%;
     border-radius: 0.5em 0.5em 0 0;
 

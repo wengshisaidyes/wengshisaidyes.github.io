@@ -46,17 +46,21 @@ function buildLocationList(data) {
   for (i = 0; i < data.features.length; i++) {
     var currentFeature = data.features[i];
     var prop = currentFeature.properties;
+
+    // Add nav buttons to map
     var locations = document.getElementById('nwi-map-nav');
     var location = locations.appendChild(document.createElement('div'));
     location.className = 'map-link';
     location.id = 'link-' + prop.link;
-    location.innerHTML = prop.link;
+    location.innerHTML = '<h3>' + prop.link + '</h3><p><b>' + currentFeature.properties.title + '</b></p>' +
+    '<p>' + currentFeature.properties.street + '</p>' +
+    '<p>' + currentFeature.properties.town + ', ' + currentFeature.properties.province + '</p>';
     location.dataPosition = i;
 
     location.addEventListener('click', function(e) {
       var clickedListing = data.features[this.dataPosition];
       flyToLocation(clickedListing);
-      createPopUp(clickedListing);
+      //createPopUp(clickedListing);
       var activeItem = document.getElementsByClassName('active');
       if (activeItem[0]) {
         activeItem[0].classList.remove('active');
@@ -94,7 +98,7 @@ geojson.features.forEach(function(marker) {
     el.addEventListener('click', function(e) {
         var activeItem = document.getElementsByClassName('active');
         flyToLocation(marker);
-        createPopUp(marker);
+        //createPopUp(marker);
         e.stopPropagation();
         if (activeItem[0]) {
             activeItem[0].classList.remove('active');

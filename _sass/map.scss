@@ -37,43 +37,57 @@
 
 #nwi-map-nav {
     color: #000;
-    background-color: $bg1;
-	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-
     position: absolute;
     top: 0;
     left: 0;
     margin: 10px 0 0 10px;
-    border-radius: 4px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .map-link {
-    text-transform: capitalize;
+    background-color: $bg1;
+	border: 1px solid $col-highlight;
+    border-radius: 4px;
     flex: 0;
+
     cursor: pointer;
-    height: 2em;
-    line-height: 2em;
     font-weight: 300;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    margin-bottom: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-align: center;
+
+    overflow: hidden;
+
+    h3 {
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5em;
+        margin-bottom: 0.5em;
+    }
+
+    p {
+        font-weight: 200;
+    }
+
+    h3, p {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
 }
 
-.map-link:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+.map-link:not(.active):hover {
+    background-color: $col-highlight;
 }
 
-#link-accommodations {
-    border-radius: 0 4px 4px 0;
-}
-
-#link-wedding {
-    border-right: 1px solid #ddd;
-    border-radius: 4px 0 0 4px;
+.mapboxgl-ctrl-group:not(:empty) {
+	-moz-box-shadow: 0 0 2px $col-highlight;
+	-webkit-box-shadow: 0 0 2px $col-highlight;
+	box-shadow: 0 0 0 2px $col-highlight;
 }
 
 .active {
-    color: $col-anna;
+    background-color: $col-anna;
+    color: $bg1;
 }

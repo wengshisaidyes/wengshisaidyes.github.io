@@ -75,7 +75,13 @@ h3, h4 {
     flex: 1 1 0;
     text-align: left;
     margin-left: $nav-padding - $outside-padding;
-    margin-right: $nav-padding;
+    margin-right: $outside-padding;
+
+    a, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid $col-highlight;
+    }
 
     h2 {
         @extend .anna;
@@ -86,7 +92,7 @@ h3, h4 {
 
     h3 {
         font-weight: 400;
-        margin-top: 1em;
+        margin-top: 0.5em;
     }
 
     h3, p {
@@ -106,7 +112,7 @@ h3, h4 {
 }
 
 .placeholder + .content {
-    margin-left: $nav-padding;
+    margin-left: $outside-padding;
     margin-right: $nav-padding - $outside-padding;
 }
 
@@ -190,7 +196,7 @@ h3, h4 {
 
 #footer {
     flex: 1 1 0;
-    height: $nav-height;
+    height: 2*$nav-gap;
     padding-left: $nav-padding;
     padding-right: $nav-padding;
     background-color: #222;
