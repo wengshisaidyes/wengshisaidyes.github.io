@@ -9,6 +9,7 @@
     flex-grow: 1;
     font-family: $f-header !important;
     font-weight: 200;
+    overflow: hidden;
 }
 
 .marker {
@@ -43,6 +44,7 @@
     margin: 10px 0 0 10px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .map-link {

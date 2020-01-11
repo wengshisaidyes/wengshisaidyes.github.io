@@ -113,7 +113,7 @@ $( "#submit-form" ).on('click', function(e) {
     e.preventDefault();
 
     $( "#submit-form" ).val('...');
-    $( "#rsvp fieldset" ).prop("disabled", true);
+    //$( "#rsvp fieldset" ).prop("disabled", true);
     $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
 
     $( "#name" ).val( $( "#name-sur" ).text() );
@@ -140,7 +140,7 @@ $( "#submit-form" ).on('click', function(e) {
         // this does not validate success!
         $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
         $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
-        $( "#rsvp fieldset" ).prop("disabled", false);
+        //$( "#rsvp fieldset" ).prop("disabled", false);
         $( "#submit-form" ).val('✔');
     });
 });
