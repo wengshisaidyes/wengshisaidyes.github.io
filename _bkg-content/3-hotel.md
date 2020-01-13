@@ -12,10 +12,10 @@ A shuttle bus has been arranged to pick guests up from the hotel before the wedd
 
 <div class="schedule">
     <div class="event-times">
-        <div><b>3:30 PM</b></div>
-        <div><b>3:45 PM</b></div>
-        <div><b>9:45 PM</b></div>
-        <div><b>11:15 PM</b></div>
+        <div><em>3:30 PM</em></div>
+        <div><em>3:45 PM</em></div>
+        <div><em>9:45 PM</em></div>
+        <div><em>11:15 PM</em></div>
     </div>
     <div>
         <div>Bus boarding in hotel parking lot</div>

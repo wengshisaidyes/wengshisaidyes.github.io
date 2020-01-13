@@ -1,4 +1,5 @@
 $bg1:               #fff;
+$bg2:               #222;
 
 $col-text:          #222;
 $col-anna:          #92374d;
@@ -26,9 +27,10 @@ body {
     font-family: $f-header;
     font-weight: 200;
     color: $col-text;
+    background-color: $col-anna;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, b {
     font-weight: inherit;
 }
 
@@ -62,6 +64,24 @@ em {
         color: #000;
         background-color: $col-anna-diff;
     }
+}
+
+#parallax-container {
+    background-color: $col-anna;
+}
+
+#footer {
+    box-shadow: inset 0 1vh 1vh #0004;
+    color: $bg1;
+    background-color: $col-anna;
+}
+
+#content-footer {
+    background: linear-gradient($bg1, $col-anna);
+}
+
+.background {
+    background-color: $bg1;
 }
 
 .foreground-image {

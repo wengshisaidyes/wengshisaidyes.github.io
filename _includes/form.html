@@ -2,14 +2,19 @@
     <div id="form-wrapper" class="field-wrapper fieldset-hidden-in-the-html"">
         <p class="bridesmaid">Ready to RSVP?</p>
         <br/>
-        <fieldset>
+        <div id="shadow-realm">
             <input id="name"                name="name" type="text">
             <input id="entree"              name="entree" type="text">
             <input id="diet"                name="diet" type="text">
             <input id="restrictions"        name="restrictions" type="text">
             <input id="guest"               name="guest" type="text">
+            <input id="guest-name"          name="guest_name" type="text">
+            <input id="guest-entree"        name="guest_entree" type="text">
+            <input id="guest-diet"          name="guest_diet" type="text">
+            <input id="guest-restrictions"  name="guest_restrictions" type="text">
             <input id="song"                name="song" type="text">
-
+        </div>
+        <fieldset>
             <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false">Your Name</span><span>&nbsp;and I would like my entrée to be</span>
             <select id="entree-sur">
                 <option>Entrée</option>
@@ -38,11 +43,6 @@
             <br/>
         </fieldset>
         <fieldset id="guest-field" class="fieldset-hidden-in-the-html">
-            <input id="guest-name"          name="guest_name" type="text">
-            <input id="guest-entree"        name="guest_entree" type="text">
-            <input id="guest-diet"          name="guest_diet" type="text">
-            <input id="guest-restrictions"  name="guest_restrictions" type="text">
-
             <span>My guest's name is&nbsp;</span><span id="guest-name-sur" contenteditable="true" spellcheck="false">Guest's Name</span><span>&nbsp;and they would like</span>
             <select id="guest-entree-sur">
                 <option>Entrée</option>

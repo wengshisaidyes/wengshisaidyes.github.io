@@ -52,7 +52,7 @@ function buildLocationList(data) {
     var location = locations.appendChild(document.createElement('div'));
     location.className = 'map-link';
     location.id = 'link-' + prop.link;
-    location.innerHTML = '<h3>' + prop.link + '</h3><p><b>' + currentFeature.properties.title + '</b></p>' +
+    location.innerHTML = '<h3>' + prop.link + '</h3><p><em>' + currentFeature.properties.title + '</em></p>' +
     '<p>' + currentFeature.properties.street + '</p>' +
     '<p>' + currentFeature.properties.town + ', ' + currentFeature.properties.province + '</p>';
     location.dataPosition = i;
@@ -84,7 +84,7 @@ function createPopUp(currentFeature) {
 
   var popup = new mapboxgl.Popup({ closeOnClick: false, closeButton: false })
     .setLngLat(currentFeature.geometry.coordinates)
-    .setHTML('<p><b>' + currentFeature.properties.title + '</b></p>' +
+    .setHTML('<p><em>' + currentFeature.properties.title + '</em></p>' +
     '<p>' + currentFeature.properties.street + '</p>' +
     '<p>' + currentFeature.properties.town + ', ' + currentFeature.properties.province + '</p>')
     .addTo(map);

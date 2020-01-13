@@ -26,6 +26,7 @@ $col-form-input: $col-highlight;
     font-weight: 200;
     font-size: 1em;
     border: none;
+    border-radius: 0;
     margin: 0;
     padding: 0;
 }
@@ -38,21 +39,13 @@ $col-form-input: $col-highlight;
     padding-top: $nav-gap;
 
     // Form elements
-    input[type="text"] {
-        @extend %prevent-default;
-        position: absolute;
-        visibility: hidden;
-        top: 0;
-        right: 0;
-        display: inline-block;
-    }
-
     select {
         @extend %prevent-default;
         color: $col-form-input;
         border-bottom: 1px solid $col-form-input;
         display: inline-block;
         text-align: center;
+        text-align-last: center;
 
         option {
             width: max-content;
@@ -143,6 +136,19 @@ fieldset {
 
 .fieldset-lurking {
     opacity: 0.6;
+}
+
+#shadow-realm {
+    @extend %prevent-default;
+    position: absolute;
+    visibility: hidden;
+    display: inline-block;
+    top: 0;
+    right: 0;
+
+    input[type="text"] {
+        display: block;
+    }
 }
 
 .submit-field {

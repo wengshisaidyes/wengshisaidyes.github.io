@@ -5,6 +5,8 @@
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
+    overflow-x: hidden;
+    overscroll-behavior: none;
     perspective: 8px;
     perspective-origin: center;
     scroll-snap-type: y mandatory;
@@ -14,6 +16,7 @@
     position: absolute;
     width: 100%;
     transform-origin: center 50vh;
+    //transform-origin: bottom right; this might fix the chrome over-scroll problem
 
     img {
         position: absolute;
@@ -41,6 +44,7 @@
     position: relative;
     border-radius: 0.5em;
     overflow: hidden;
+    background-clip: content-box;
 }
 
 %foreground-layout {
@@ -64,7 +68,7 @@
 }
 
 #buffer-overlay {
-    height: 15vh;
+    height: $nav-height;
     padding-left: $nav-padding;
     padding-top: 1em;
     font-size: 2em;
@@ -73,11 +77,12 @@
         font-family: $f-header;
         text-transform: uppercase;
         opacity: 0%;
+        margin-right: 0.5em;
     }
 }
 
 #buffer-202 {
-    height: 15.9vh;
+    height: $nav-height;
 }
 
 #buffer-146 {

@@ -5,6 +5,11 @@ var scrolling = {
 var $form = $('form#rsvp'),
   url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
 
+
+/*$( window ).on( "load", function(e) {
+    $( "#parallax-container" ).css( "perspective", "8px" );
+});*/
+
 rsvp.click(function() {
     $( "#navigation-bar" ).toggleClass( "slide" );
     $( "#parallax-container" ).toggleClass( "slide" );
@@ -18,7 +23,8 @@ rsvp.click(function() {
     rsvp.toggleClass( "rolled-over" );
 });
 
-//Link scroll-to effects
+
+// Link scroll-to effects ---------------------------------------------
 
 $( "#link-when" ).click(function() {
     if (rsvp.hasClass( "rolled-over" )) {
@@ -48,8 +54,8 @@ $( "#link-faq" ).click(function() {
     document.querySelector("#snap-faq").scrollIntoView(scrolling);
 });
 
-// Form handling
-// -----------------
+
+// Form handling ------------------------------------------------------
 
 // Span input handling
 $( "span[contenteditable='true']" ).keyup(function(e) {
@@ -80,8 +86,15 @@ $( "span[contenteditable='true']" ).click(function() {
 // Select resizing and decision text handling
 $( "select" ).change(function() {
     select = $( this );
+    realm = $( "#shadow-realm" );
     option = select.children( "option:selected" );
-    select.width( option.outerWidth() );
+
+    shadow = $( "<span>" ).html(option.text()).appendTo( realm );
+    width = shadow.width();
+    shadow.remove();
+
+    select.width( width + 8 ); //8px is the padding Firefox gives to option elements
+
     if ( select.is( "#guest-sur" ) ) {
         if ( option.val() == "Yes" ) {
             $( "#guest-field" ).removeClass( "fieldset-hidden-in-the-html" );
