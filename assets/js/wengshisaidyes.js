@@ -1,14 +1,11 @@
-var rsvp = $( "#link-rsvp" );
+var rsvp = $( " #link-rsvp " );
 var scrolling = {
     behavior: "smooth"
 };
-var $form = $('form#rsvp'),
+var ch = $( "#__ch" ).width();
+console.log(ch);
+var $form = $(" form#rsvp "),
   url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
-
-
-/*$( window ).on( "load", function(e) {
-    $( "#parallax-container" ).css( "perspective", "8px" );
-});*/
 
 rsvp.click(function() {
     $( "#navigation-bar" ).toggleClass( "slide" );
@@ -57,10 +54,59 @@ $( "#link-faq" ).click(function() {
 
 // Form handling ------------------------------------------------------
 
+// Add default text (we dont have placeholder for spans); all dom elements are loaded here (theoretically?)
+$( "span[contenteditable='true']" ).each( function() {
+    input = $( this );
+    input.text( input.attr("default"));
+    input.attr("edited", "false");
+});
+
 // Span input handling
+// On the way in we remove the contents if its default...
+$( "span[contenteditable='true']" ).click(function(e) {
+    input = $( this );
+    console.log("CLICK");
+    if (input.attr("edited") == "false") {
+        console.log("NANI");
+        input.text("");
+        input.attr("edited", "true");
+        input.keyup();
+    }
+});
+
+// Need to differentiate between a focus-on-click and from tab
+// IF we click the span, and trigger a focus event followed by a click event,
+//  in Chrome it appears that the final click event will not fire (and give focus to the element)
+//  if the element isn't in the same spot (i.e. its width changed due to changing text())
+//  so we have to let the original click event resolve (i.e let that event change the text)
+$( "span[contenteditable='true']" ).mousedown(function(e) {
+    target = e.target;
+}).focus(function(e) {
+    input = $( this );
+    if (typeof target === "undefined") {
+        target = false;
+    }
+    if (target != e.target) {
+        if (input.attr("edited") == "false") {
+            input.text("");
+            input.attr("edited", "true");
+            input.keyup();
+        }
+    }
+});
+
+// Handle enter; we only want form submit from clicking "Send"
+$( "span[contenteditable='true']" ).keydown(function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        e.stopPropagation();
+        $( this ).blur();
+    }
+});
+
+// This will handle empty text inputs
 $( "span[contenteditable='true']" ).keyup(function(e) {
     input = $( this );
-    input.prop("edited", true);
     if (input.text().length < 1) {
         input.addClass( "empty" );
     } else {
@@ -68,19 +114,17 @@ $( "span[contenteditable='true']" ).keyup(function(e) {
     }
 });
 
-$( "span[contenteditable='true']" ).keydown(function(e) {
-    if (e.which == 13) {
-        e.preventDefault();
-        $( this ).blur();
-    }
-});
-
-$( "span[contenteditable='true']" ).click(function() {
+// This handles restoring default text
+$( "span[contenteditable='true']" ).blur(function() {
     input = $( this );
-    if (!input.prop("edited")) {
-        input.text("");
+    if (input.text() == "") {
+        input.attr("edited", "false");
+        input.text( input.attr("default") );
         input.keyup();
     }
+    // return to default (edited == false) if empty on blur
+    // also remove space emulating min-width = 2ch
+
 });
 
 // Select resizing and decision text handling
@@ -113,13 +157,22 @@ $( "select" ).change(function() {
             choices.toggleClass( "chosen" );
         }
     }
+
+    if (select.attr("edited") == "false") {
+        select.attr("edited", "true");
+    }
 });
 
 // Trigger change at least once on each to set width and initial decision
 $( "select" ).each(function() {
-    $( this ).change();
-    $( this ).keyup();
+    select = $( this );
+    select.change();
+    //input.keyup();
+    select.attr("edited", "false");
 });
+
+// Set all the default options to hidden; still rendered as initial value
+$( "option.select-default" ).prop("hidden", true);
 
 // Form event
 $( "#submit-form" ).on('click', function(e) {
@@ -161,3 +214,7 @@ $( "#submit-form" ).on('click', function(e) {
 $( '.close' ).click(function(e) {
     rsvp.click();
 });
+
+// Manually set height to 7*100vh
+// (Chrome calculates height prior to translation of parallax elements, which shift down after transform)
+//$( "#background" ).height("700vh");

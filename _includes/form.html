@@ -3,6 +3,7 @@
         <p class="bridesmaid">Ready to RSVP?</p>
         <br/>
         <div id="shadow-realm">
+            <span id="__ch">0</span>
             <input id="name"                name="name" type="text">
             <input id="entree"              name="entree" type="text">
             <input id="diet"                name="diet" type="text">
@@ -15,9 +16,9 @@
             <input id="song"                name="song" type="text">
         </div>
         <fieldset>
-            <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false">Your Name</span><span>&nbsp;and I would like my entrée to be</span>
+            <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false" default="Your Name"></span><span>&nbsp;and I would like my entrée to be</span>
             <select id="entree-sur">
-                <option>Entrée</option>
+                <option class="select-default">Entrée</option>
                 <option>Beef</option>
                 <option>Chicken</option>
                 <option>Fish</option>
@@ -30,7 +31,7 @@
             <select id="diet-sur">
                 <option>No</option>
                 <option>Yes</option>
-            </select><span class="decision"><span class="choice">.</span><span class="choice">, I need to avoid&nbsp;<span id="restrictions-sur" contenteditable="true" spellcheck="false">Dietary Restrictions</span>.</span></span>
+            </select><span class="decision"><span class="choice">.</span><span class="choice">, I need to avoid&nbsp;<span id="restrictions-sur" contenteditable="true" spellcheck="false" default="Dietary Restrictions"></span>.</span></span>
             <br/>
             <br/>
             <span class="bridesmaid">Planning on bringing anyone?</span>
@@ -43,9 +44,9 @@
             <br/>
         </fieldset>
         <fieldset id="guest-field" class="fieldset-hidden-in-the-html">
-            <span>My guest's name is&nbsp;</span><span id="guest-name-sur" contenteditable="true" spellcheck="false">Guest's Name</span><span>&nbsp;and they would like</span>
-            <select id="guest-entree-sur">
-                <option>Entrée</option>
+            <span>My guest's name is&nbsp;</span><span id="guest-name-sur" contenteditable="true" spellcheck="false" default="Guest's Name"></span><span>&nbsp;and they would like</span>
+            <select id="guest-entree-sur" default="Entrée">
+                <option class="select-default">Entrée</option>
                 <option>Beef</option>
                 <option>Chicken</option>
                 <option>Fish</option>
@@ -58,13 +59,13 @@
             <select id="guest-diet-sur" class="switch">
                 <option>No</option>
                 <option>Yes</option>
-            </select><span class="decision"><span class="choice">.</span><span class="choice">, they need to avoid&nbsp;<span id="guest-restrictions-sur" contenteditable="true" spellcheck="false">Guest's Dietary Restrictions</span>.</span></span>
+            </select><span class="decision"><span class="choice">.</span><span class="choice">, they need to avoid&nbsp;<span id="guest-restrictions-sur" contenteditable="true" spellcheck="false" default="Diet Restrictions"></span>.</span></span>
             <br/>
             <br/>
         </fieldset>
 
         <span class="bridesmaid">Do you have a song suggestion?</span>
-        <br/><span id="song-sur" contenteditable="true" spellcheck="false">Song by Artist</span>
+        <br/><span id="song-sur" contenteditable="true" spellcheck="false" default="Song by Artist"></span>
     </div>
 
     <div class="field-wrapper">

@@ -39,6 +39,7 @@ $col-form-input: $col-highlight;
     padding-top: $nav-gap;
 
     // Form elements
+    // We are using select, input[submit], and span instead of input[text]
     select {
         @extend %prevent-default;
         color: $col-form-input;
@@ -52,14 +53,22 @@ $col-form-input: $col-highlight;
         }
     }
 
+    span[contenteditable="true"]::before {
+        content: "\feff";
+    }
+
     span[contenteditable="true"] {
         @extend %prevent-default;
+        display: inline;
         color: $col-form-input;
         border-bottom: 1px solid $col-form-input;
         min-height: 1.5em;
-        min-width: 5ch;
-        text-align: center;
+        //min-width: 3ch; //only works for inline-block, inline-flex; inline-flex has wierd cursor issue in FF
         vertical-align: top;
+    }
+
+    span[edited="false"], select[edited="false"] {
+        color: rgba($col-form-input, 0.6);
     }
 
     .empty { // For the editable span above, needs to not disappear

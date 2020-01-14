@@ -9,6 +9,7 @@
     overscroll-behavior: none;
     perspective: 8px;
     perspective-origin: center;
+    //perspective-origin: bottom right;
     scroll-snap-type: y mandatory;
 }
 
@@ -16,7 +17,7 @@
     position: absolute;
     width: 100%;
     transform-origin: center 50vh;
-    //transform-origin: bottom right; this might fix the chrome over-scroll problem
+    //transform-origin: bottom right; //this might fix the chrome over-scroll problem
 
     img {
         position: absolute;

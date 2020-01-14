@@ -1,3 +1,4 @@
+$base-size: 17.5px;
 $outside-padding: 3vw;
 $nav-padding: 5vw;
 $nav-gap: 5vh;
@@ -12,11 +13,8 @@ $nav-height: 3*$nav-gap;
 
 body {
     margin: 0;
-    font-size: 2.5vh;
-}
-
-form {
-    font-size: 2.5vh;
+    //font-size: 2.5vh;
+    font-size: $base-size;
 }
 
 h1, h2, h3, h4, p {
@@ -35,8 +33,6 @@ h2 {
 h3, h4 {
     font-size: 1em;
 }
-
-
 
 .gap {
     width: 100%;

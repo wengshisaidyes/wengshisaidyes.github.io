@@ -23,4 +23,4 @@ Yes! If you are driving, please drink responsibly. We also arranged for a shuttl
 Yes! There is a section for you to describe any dietary restrictions in the RSVP form.
 
 ### Do you have a wedding hashtag so we can tag photos?
-Yes! #wengshisaidyes
+Yes! [*\#wengshisaidyes*](https://www.instagram.com/explore/tags/wengshisaidyes/)
