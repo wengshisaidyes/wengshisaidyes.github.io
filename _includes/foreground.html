@@ -1,6 +1,6 @@
 {% for image in site.data.parallax %}
     <div class="foreground depth-{{ image.z }}">
-            <div class="gap" id="buffer-{{ image.src }}"></div>
+            <div class="gap buffer" id="buffer-{{ image.src }}"></div>
             <div class="content-wrapper {{ image.type }}">
                 <div class="foreground-image" id="img-{{ image.src }}">
                     {% if image.src == "mapbox" %}
@@ -14,6 +14,6 @@
 {% endfor %}
 <div class="foreground depth-4">
     <div id="buffer-overlay">
-        <span>Anna & Daniel</span><span class="hand bridesmaid scrawl-ccw">are getting married!</span>
+        <span>Anna & Daniel</span><span class="hand gold scrawl-ccw">are getting married!</span>
     </div>
 </div>

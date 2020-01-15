@@ -1,10 +1,10 @@
-<div id="link-bar-background"></div>
 <section id="navigation-bar" class="overlay slider">
     <h1>Anna & Daniel</h1>
     <nav id="link-bar">
         {% for item in site.data.navigation %}
-            <div>
-                <span snap="{{ item.link }}" class="link" id="link-{{ item.name | downcase }}">{{ item.name }}</span>
+            <div {% if item.link %}class="link" snap="{{ item.link }}"{% endif %}{% unless item.link %}id="rsvp-button"{% endunless %}>
+                {% if item.link %}<img src="assets/images/{{ item.link }}.svg">{% endif %}
+                <span id="link-{{ item.name | downcase }}">{{ item.name }}</span>
             </div>
         {% endfor %}
     </nav>

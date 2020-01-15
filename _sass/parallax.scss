@@ -74,50 +74,59 @@
     justify-content: flex-end;
 }
 
+.buffer {
+    margin-top: $nav-height;
+}
+
 #buffer-overlay {
     height: $nav-height;
     padding-left: $nav-padding;
-    padding-top: 1em;
     font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
     span:first-of-type {
-        font-family: $f-header;
-        text-transform: uppercase;
-        opacity: 0%;
+        visibility: hidden;
         margin-right: 0.5em;
+        text-transform: uppercase;
+    }
+
+    span:last-of-type {
+        margin-bottom: -0.2em;
     }
 }
 
 #buffer-202 {
-    height: $nav-height;
+
 }
 
 #buffer-146 {
-    height: 149.3vh;
+    height: 133.3vh; //depth 2
 }
 
 #buffer-mapbox {
-    height: 2*114.3vh + $nav-height;
+    height: 2*114.3vh; //depth 1
 }
 
 #buffer-125 {
-    height: 495.9vh;
+    height: 3*160vh; // depth 3
 }
 
 #buffer-109 {
-    height: 532.15vh;
+    height: 4*133.3vh;
 }
 
 #buffer-22 {
-    height: 816vh;
+    height: 5*160vh;
 }
 
 #buffer-57 {
-    height: 797.5vh;
+    height: 6*133.3vh;
 }
 
 #img-202 {
-    height: 90vh;
+    height: 100vh - $nav-height + 5vh;
     width: 100%;
 
     img {
@@ -129,7 +138,7 @@
 }
 
 #img-146 {
-    height: 80vh;
+    height: 100vh - $nav-height - $nav-gap;
     width: 30%;
 
     img {
@@ -146,7 +155,7 @@
 }
 
 #img-125 {
-    height: 80vh;
+    height: 100vh - $nav-height - $nav-gap;
     width: 60%;
 
     img {
@@ -158,7 +167,7 @@
 }
 
 #img-109 {
-    height: 102.5vh;
+    height: 100vh - $nav-height + 5vh;
     width: 100%;
 
     img {
@@ -170,8 +179,8 @@
 }
 
 #img-22 {
-    height: 90vh;
-    width: 60vh;
+    height: 100vh - $nav-height - $nav-gap;
+    width: 30%;
 
     img {
         bottom: 0;
@@ -182,7 +191,7 @@
 }
 
 #img-57 {
-    height: 102.5vh - 2*$nav-gap;
+    height: 100vh - $nav-height - 2*$nav-gap;
     width: 100%;
     border-radius: 0.5em 0.5em 0 0;
 

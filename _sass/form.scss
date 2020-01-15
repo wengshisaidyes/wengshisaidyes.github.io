@@ -160,19 +160,28 @@ fieldset {
     }
 }
 
-.submit-field {
+%form-button {
     position: absolute;
-    top: $nav-gap;
+    top: 0;
+    height: $nav-height;
+    display: flex;
+    align-items: center;
+}
+
+.submit-button {
+    @extend %form-button;
     left: $outside-padding;
+}
+
+.close-button {
+    @extend %form-button;
+    right: $outside-padding;
 }
 
 .close {
     font-size: 0.75em;
     -moz-appearance: none;
     -webkit-appearance: none;
-    position: absolute;
-    top: $nav-gap;
-    right: $outside-padding;
     user-select: none;
     cursor: pointer;
     width: 2em;

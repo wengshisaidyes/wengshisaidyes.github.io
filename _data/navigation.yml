@@ -2,7 +2,7 @@
   link: when
 - name: Where
   link: where
-- name: Accommodations
+- name: Rooms
   link: hotel
 - name: FAQ
   link: faq

@@ -3,7 +3,7 @@
     //this handles prior to mobile breakpoint where some squeezing occurs
 }
 
-@media (max-width: 570px) { //current date/time squeeze point
+@media (max-width: 625px) { //current date/time squeeze point
     #content-when {
 
         em {
@@ -31,10 +31,24 @@
     }
 }
 
+@media (max-width: 475px) { //top bar squeeze
+    #navigation-bar {
+        //justify-content: flex-start;
+    }
+
+    .map-link {
+        font-size: 0.8em;
+    }
+}
+
 @media (max-width: 800px) {
 
     .placeholder {
         display: none;
+    }
+
+    .nav-spacer-top {
+        height: $nav-top-height;
     }
 
     .nav-spacer-bottom {
@@ -42,51 +56,13 @@
     }
 
     .background {
+
         .content-wrapper {
-            height: 100vh - $nav-height - $nav-bottom-height;
-            margin-left: 2*$outside-padding;
-            margin-right: 2*$outside-padding;
+            height: 100vh - $nav-top-height - $nav-bottom-height;
         }
+
     }
 
-    #link-bar {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        border-top: 2px solid $col-high-diff;
-        height: $nav-bottom-height;
-
-        div {
-            flex: 1 1 auto;
-            padding-left: 0.5em;
-            padding-right: 0.5em;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        span {
-            margin: 0;
-        }
-
-        .scroll-to {
-            background-color: $col-high-diff;
-        }
-
-        .scroll-to span {
-            border: none;
-            color: inherit;
-        }
-    }
-
-    #link-bar-background {
-        display: block;
-    }
-
-    // parallax
     .foreground {
 
         .left, .right {
@@ -98,14 +74,108 @@
         }
     }
 
-    #buffer-mapbox {
-        margin-bottom: 2px; // account for border overlap
+    .buffer {
+        margin-top: $nav-top-height;
+    }
+
+    #buffer-overlay {
+        height: $nav-top-height;
     }
 
     #img-mapbox {
-        height: 100vh - $nav-height - $nav-bottom-height;
+        //margin-top: 1px; // account for border overlap
+        height: 100vh - $nav-top-height - $nav-bottom-height;
     }
 
+    // Navigation
+    #navigation-bar {
+        height: $nav-top-height;
+    }
+
+    #link-bar {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        //border-top: 1px solid $col-highlight;//-diff;
+        height: $nav-bottom-height;
+        background-color: $col-anna;
+
+        .link {
+            flex: 1 1 auto;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            color: $bg1;
+        }
+
+        img {
+            display: block;
+            //filter: invert(94%) sepia(0%) saturate(504%) hue-rotate(158deg) brightness(94%) contrast(96%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(41deg) brightness(109%) contrast(101%);
+            height: 0.75*$nav-gap;
+            cursor: pointer;
+        }
+
+        span {
+            margin: 0;
+        }
+
+        .scroll-to span {
+            border: none;
+        }
+
+        .scroll-to img {
+            //filter: invert(29%) sepia(15%) saturate(3148%) hue-rotate(300deg) brightness(88%) contrast(88%);
+            //filter: invert(78%) sepia(13%) saturate(761%) hue-rotate(314deg) brightness(93%) contrast(97%);
+            filter: invert(82%) sepia(35%) saturate(608%) hue-rotate(339deg) brightness(104%) contrast(101%);
+            //filter: invert(86%) sepia(9%) saturate(1657%) hue-rotate(109deg) brightness(85%) contrast(85%);
+            //filter: invert(20%) sepia(95%) saturate(357%) hue-rotate(131deg) brightness(102%) contrast(91%);
+        }
+    }
+
+    #rsvp-button {
+        position: fixed;
+        top: 0;
+        right: $outside-padding;
+        height: $nav-top-height;
+        display: flex;
+        align-items: center;
+    }
+
+    #rsvp-pane {
+        width: 100vw;
+        padding-top: $nav-top-height;
+        padding-left: 2*$outside-padding;
+        padding-right: 2*$outside-padding;
+    }
+
+    .submit-button {
+        left: 2*$outside-padding;
+        height: $nav-top-height;
+    }
+
+    .close-button {
+        right: 2*$outside-padding;
+        height: $nav-top-height;
+    }
+
+    .slide {
+        left: -100vw !important;
+    }
+
+    .slide-pane {
+        left: 0 !important;
+    }
+
+    // Map
     .map {
         border-right: none;
         border-left: none;
@@ -144,25 +214,4 @@
         background-clip: border-box;
     }
 
-    .slide {
-        left: -100vw !important;
-    }
-
-    .slide-pane {
-        left: 0 !important;
-    }
-
-    #rsvp-pane {
-        position: fixed;
-        top: 0;
-        left: 100vw;
-        width: 100vw;
-        height: 100vh;
-        background-color: $col-form-bg;
-        color: $col-form;
-        padding-top: $nav-height;
-        padding-left: $outside-padding;
-        padding-right: $outside-padding;
-        overflow-y: auto;
-    }
 }

@@ -33,7 +33,7 @@ var geojson = {
       coordinates: [-78.692327, 43.896437]
     },
     properties: {
-        link: 'accommodations',
+        link: 'rooms',
         title: 'Comfort Inn & Suites',
         street: '35 Spicer Square',
         town: 'Bowmanville',

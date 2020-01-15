@@ -11,7 +11,7 @@ $col-text-diff:     #ddd;
 $col-anna-diff:     #6dc8b1;
 $col-maid1-diff:    #155252;
 $col-dan-diff:      #ff5989;
-$col-high-diff:     rgb(0, 40, 127);
+$col-high-diff:     #00287f;
 
 $col-maid2:         #b78278;
 
@@ -40,29 +40,29 @@ h2, h3, h4 {
 }
 
 em {
-    font-weight: 300;
+    font-weight: 400;
     font-style: normal;
 }
 
 #navigation-bar {
-    color: $col-text-diff;
+    color: $col-text;//-diff;
 
     #link-rsvp {
         border-radius: 0.2em;
         height: 2em;
         padding-left: 1em;
         padding-right: 1em;
-        border: 1px solid $col-high-diff;
+        border: 1px solid $col-highlight;//-diff;
         transition: background-color 0.3s;
     }
 
     #link-rsvp:hover {
-        background-color: $col-high-diff;
+        background-color: $col-highlight;//-diff;
     }
 
     .rolled-over {
-        color: #000;
-        background-color: $col-anna-diff;
+        color: $bg1;
+        background-color: $col-anna;//-diff;
     }
 }
 
@@ -82,10 +82,27 @@ em {
 
 .background {
     background-color: $bg1;
+
+    em {
+        color: $col-anna;
+    }
+
+    a, a:visited, a:hover, a:active {
+        font-weight: 400;
+        text-decoration: none;
+        color: $col-highlight;
+        border-bottom: 1px solid $col-highlight;
+    }
 }
 
 .foreground-image {
-        background: #eaadad;
+    background: repeating-linear-gradient(
+        45deg,
+        $col-highlight,
+        $col-highlight 10px,
+        $bg1 10px,
+        $bg1 20px
+        );
 }
 
 .hand {
@@ -120,4 +137,8 @@ em {
 
 .anna {
     color: $col-anna;
+}
+
+.gold {
+    color: $col-highlight
 }

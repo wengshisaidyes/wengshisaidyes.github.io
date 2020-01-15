@@ -1,4 +1,4 @@
-$base-size:         14px;
+$base-size:         16px;
 //  width    px
 //  1280     17
 //   400     14
@@ -6,7 +6,8 @@ $outside-padding:   3vw;
 $nav-padding:       5vw;
 $nav-gap:           5vh;
 $nav-height:        3*$nav-gap;
-$nav-bottom-height: 2*$nav-gap;
+$nav-top-height:    2*$nav-gap;
+$nav-bottom-height: 1.5*$nav-gap;
 $min-width:         300px;
 
 
@@ -25,7 +26,7 @@ body {
     margin: 0;
     //font-size: $base-size;
     //font-size: 2.5vh;
-    font-size: calc(100% + 3*(100vw - 400px)/880);
+    font-size: calc(100% + 2*(100vw - 400px)/880);
 }
 
 h1, h2, h3, h4, p {
@@ -33,15 +34,21 @@ h1, h2, h3, h4, p {
     margin: 0;
 }
 
+//need to rectify the following header font sizes
 h1 {
-    font-size: 4em;
+    font-size: 3.375em;
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 2.25em;
 }
 
-h3, h4 {
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-weight: 400;
     font-size: 1em;
 }
 
@@ -76,13 +83,9 @@ h3, h4 {
         margin-left: $outside-padding;
         margin-right: $outside-padding;
         height: 100vh - $nav-height;
+        overflow: hidden;
     }
 
-    a, a:visited, a:hover, a:active {
-        text-decoration: none;
-        color: inherit;
-        border-bottom: 1px solid $col-highlight;
-    }
 }
 
 .snap {
@@ -100,30 +103,21 @@ h3, h4 {
     margin-right: $outside-padding;
 
     h2 {
-        @extend .anna;
-        text-transform: uppercase;
-        font-size: 1.5em;
-        margin-bottom: 1em;
+        text-transform: capitalize;
+        margin-bottom: 0.25em;
     }
 
     h3 {
-        font-weight: 400;
-        margin-top: 0.5em;
-    }
-
-    h3, p {
-        margin-bottom: 0.5em;
+        margin-bottom: 0.25em;
     }
 
     h4 {
-        margin-top: 0.5em;
-        margin-botom: 0.25em;
-        margin-left: $nav-padding / 2;
+        margin-bottom: 0.25em;
+        color: $col-anna;
     }
 
-    h4 ~ p {
-        // not sure what this is for...
-        margin-left: $nav-padding / 2;
+    p {
+        margin-bottom: 0.75em;
     }
 }
 
@@ -135,12 +129,13 @@ h3, h4 {
 .schedule {
     display: flex;
     margin-top: 1em;
+    color: $col-anna;
+    font-weight: 300;
 }
 
 .event-times {
     text-align: right;
     margin-right: 1em;
-    color: #92374d;
 }
 
 .resize-animation-stopper {
@@ -148,7 +143,7 @@ h3, h4 {
 }
 
 #content-when {
-    font-size: 2.25em;
+    font-size: 2em;
 
     .placeholder {
         width: 30%;
@@ -164,7 +159,7 @@ h3, h4 {
     h2 {
         @extend .hand;
         @extend .scrawl-ccw;
-        @extend .anna;
+        color: $col-anna;
         text-transform: none;
         margin: 0;
     }
@@ -172,14 +167,14 @@ h3, h4 {
     h3 {
         @extend .hand;
         @extend .scrawl-ccw;
-        @extend .bridesmaid;
+        color: $col-anna;
         margin: 0;
     }
 
     h4 {
         @extend .hand;
         @extend .scrawl-ccw;
-        @extend .anna;
+        color: $col-highlight;
         margin-top: 0.5em;
     }
 }
@@ -187,27 +182,34 @@ h3, h4 {
 #content-hotel {
 
     .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding-top: 1em;
     }
 
     .placeholder {
         width: 60%;
     }
+
+    h2 {
+        @extend .hand;
+        color: $col-anna;
+    }
 }
 
 #content-faq {
 
-    .placeholder {
-        width: 60vh;
+    .content {
+        padding-top: 1em;
     }
 
-    .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .placeholder {
+        width: 30%;
     }
+
+    h2 {
+        @extend .hand;
+        color: $col-anna;
+    }
+
 }
 
 #content-footer {

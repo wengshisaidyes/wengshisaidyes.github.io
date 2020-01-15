@@ -4,7 +4,7 @@ gap: 0
 empty: false
 ---
 ## Accommodations
-Rooms are available with a group rate at the [*Comfort Inn & Suites*](https://www.choicehotels.com/en-ca/ontario/bowmanville/comfort-inn-hotels/cna97) in *Bowmanville*.
+Rooms are available with a group rate at the [Comfort Inn & Suites](https://www.choicehotels.com/en-ca/ontario/bowmanville/comfort-inn-hotels/cna97) in *Bowmanville*.
 
 To make a reservation, please call *905-623-6781* and identify the group name "Shi-Weng Wedding". Please reserve by *May 28, 2020*.
 

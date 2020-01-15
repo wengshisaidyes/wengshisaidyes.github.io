@@ -36,11 +36,12 @@ var scrolling = {
     behavior: "smooth"
 };
 
-$( ".link" ).not( "#link-rsvp" ).click(function() {
+links = $( ".link" );
+links.click(function() {
     rsvp.hasClass( "rolled-over" ) ? rsvp.click() : null;
     link = $( this );
-    $( "#link-bar div").removeClass("scroll-to");
-    link.parent().addClass("scroll-to");
+    links.removeClass("scroll-to");
+    link.addClass("scroll-to");
     snap = "#snap-".concat(link.attr("snap"));
     document.querySelector(snap).scrollIntoView(scrolling);
 });
@@ -53,10 +54,10 @@ var scroll = function() {
     var pos = container.scrollTop(); //CSS scroll snapping gives us the correct location
     var target = $( ".snap" ).eq( Math.round( pos / height ) ).attr("snap");
     target == "when" ? rsvp.addClass("highlight") : rsvp.removeClass("highlight");
-    links = $( "#link-bar div").removeClass("scroll-to");
+    links.removeClass("scroll-to");
     links.each(function() {
         link = $( this );
-        if (link.children().attr("snap") == target) {
+        if (link.attr("snap") == target) {
             link.addClass("scroll-to");
             return false;
         }

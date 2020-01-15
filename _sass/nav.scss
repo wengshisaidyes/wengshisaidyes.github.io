@@ -1,19 +1,17 @@
 $pane-width: 50vw;
 
 #navigation-bar {
-    mix-blend-mode: exclusion;
+    //mix-blend-mode: exclusion;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    padding-top: $nav-gap;
-    padding-bottom: $nav-gap;
     padding-left: $nav-padding;
     padding-right: $nav-padding;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: $nav-height;
     user-select: none;
 
@@ -35,7 +33,7 @@ $pane-width: 50vw;
     span {
         position: relative;
         margin-left: 2em;
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-weight: 300;
         display: inline-flex;
         justify-content: center;
@@ -43,16 +41,20 @@ $pane-width: 50vw;
         transition: border-color .5s;
         cursor: pointer;
     }
+
+    img {
+        display: none;
+    }
 }
 
-#link-bar-background {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: $nav-bottom-height;
-    background-color: $bg1;
-}
+// #link-bar-background {
+//     display: none;
+//     position: fixed;
+//     bottom: 0;
+//     width: 100%;
+//     height: $nav-bottom-height;
+//     background-color: $bg1;
+// }
 
 .overlay {
     position: fixed;
@@ -71,10 +73,10 @@ $pane-width: 50vw;
 }
 
 .scroll-to span {
-    color: $col-high-diff;
-    border-bottom: 1px solid $col-high-diff;
+    color: $col-highlight;//-diff;
+    border-bottom: 1px solid $col-highlight;//-diff;
 }
 
 .highlight {
-    background-color: $col-high-diff;
+    background-color: $col-highlight;//-diff;
 }
