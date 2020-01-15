@@ -1,9 +1,37 @@
 // We handle changing viewport here
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+    //this handles prior to mobile breakpoint where some squeezing occurs
+}
 
-    .foreground {
-        display: none;
+@media (max-width: 570px) { //current date/time squeeze point
+    #content-when {
+
+        em {
+            display: block;
+            text-align: center;
+            line-height: 1.25em;
+        }
+
+        em:nth-child(4) {
+            font-size: 2em;
+            margin-bottom: -0.2em;
+        }
+
+        h2, h3, h4 {
+            transform: none;
+        }
+
+        h3 {
+            margin-top: 0.5em;
+        }
+
+        .break {
+            display: none;
+        }
     }
+}
+
+@media (max-width: 800px) {
 
     .placeholder {
         display: none;
@@ -16,6 +44,8 @@
     .background {
         .content-wrapper {
             height: 100vh - $nav-height - $nav-bottom-height;
+            margin-left: 2*$outside-padding;
+            margin-right: 2*$outside-padding;
         }
     }
 
@@ -54,5 +84,85 @@
 
     #link-bar-background {
         display: block;
+    }
+
+    // parallax
+    .foreground {
+
+        .left, .right {
+            display: none;
+        }
+
+        .center {
+            padding: 0;
+        }
+    }
+
+    #buffer-mapbox {
+        margin-bottom: 2px; // account for border overlap
+    }
+
+    #img-mapbox {
+        height: 100vh - $nav-height - $nav-bottom-height;
+    }
+
+    .map {
+        border-right: none;
+        border-left: none;
+        border-top: 2px solid $col-highlight;
+        border-bottom: 2px solid $col-highlight;
+    }
+
+    #nwi-map-nav {
+        color: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10px 0 0 10px;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        width: calc(100vw - 60px);
+    }
+
+    .map-link {
+        flex: 1 1 auto;
+    }
+
+    .map-link:first-child{
+        border-radius: 4px 0 0 4px;
+        border-right-width: 1px;
+    }
+
+    .map-link:last-child{
+        border-radius: 0 4px 4px 0;
+        border-left-width: 1px;
+    }
+
+    .active {
+        border-color: rgba(0, 0, 0, 0.1);
+        background-clip: border-box;
+    }
+
+    .slide {
+        left: -100vw !important;
+    }
+
+    .slide-pane {
+        left: 0 !important;
+    }
+
+    #rsvp-pane {
+        position: fixed;
+        top: 0;
+        left: 100vw;
+        width: 100vw;
+        height: 100vh;
+        background-color: $col-form-bg;
+        color: $col-form;
+        padding-top: $nav-height;
+        padding-left: $outside-padding;
+        padding-right: $outside-padding;
+        overflow-y: auto;
     }
 }

@@ -1,3 +1,9 @@
+// We need to push each element down to its final position;
+// if it is located 100vh below the element origin it needs
+// to be moved slightly farther to account for the perspective!
+// (114.3vh for translateZ(2px)). Additional height is added 1:1 once
+// the element is scrolled into view.
+
 #parallax-container {
     position: relative;
     left: 0;
@@ -91,7 +97,7 @@
 }
 
 #buffer-mapbox {
-    height: 244.6vh;
+    height: 2*114.3vh + $nav-height;
 }
 
 #buffer-125 {
@@ -135,7 +141,7 @@
 }
 
 #img-mapbox {
-    height: 80vh;
+    height: 100vh - $nav-height - $nav-gap;
     width: 100%;
 }
 

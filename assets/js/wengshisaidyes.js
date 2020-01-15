@@ -36,36 +36,14 @@ var scrolling = {
     behavior: "smooth"
 };
 
-$( ".link" ).click(function() {
+$( ".link" ).not( "#link-rsvp" ).click(function() {
     rsvp.hasClass( "rolled-over" ) ? rsvp.click() : null;
     link = $( this );
     $( "#link-bar div").removeClass("scroll-to");
     link.parent().addClass("scroll-to");
     snap = "#snap-".concat(link.attr("snap"));
-    console.log(snap);
     document.querySelector(snap).scrollIntoView(scrolling);
 });
-//
-// $( "#link-where" ).click(function() {
-//     if (rsvp.hasClass( "rolled-over" )) {
-//         rsvp.click();
-//     }
-//     document.querySelector("#snap-where").scrollIntoView(scrolling);
-// });
-//
-// $( "#link-accommodations" ).click(function() {
-//     if (rsvp.hasClass( "rolled-over" )) {
-//         rsvp.click();
-//     }
-//     document.querySelector("#snap-hotel").scrollIntoView(scrolling);
-// });
-//
-// $( "#link-faq" ).click(function() {
-//     if (rsvp.hasClass( "rolled-over" )) {
-//         rsvp.click();
-//     }
-//     document.querySelector("#snap-faq").scrollIntoView(scrolling);
-// });
 
 var container = $( "#parallax-container" );
 var height = container.height()
