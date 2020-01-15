@@ -1,13 +1,5 @@
 $pane-width: 50vw;
 
-.overlay {
-    position: fixed;
-}
-
-.slider {
-    transition: left .5s;
-}
-
 #navigation-bar {
     mix-blend-mode: exclusion;
     position: fixed;
@@ -21,7 +13,9 @@ $pane-width: 50vw;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     height: $nav-height;
+    user-select: none;
 
     h1 {
         text-align: left;
@@ -29,6 +23,43 @@ $pane-width: 50vw;
         font-weight: 200;
         font-size: 2em;
     }
+}
+
+#link-bar {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    span {
+        position: relative;
+        margin-left: 2em;
+        text-transform: uppercase;
+        font-weight: 300;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: border-color .5s;
+        cursor: pointer;
+    }
+}
+
+#link-bar-background {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: $nav-bottom-height;
+    background-color: $bg1;
+}
+
+.overlay {
+    position: fixed;
+}
+
+.slider {
+    transition: left .5s;
 }
 
 .slide {
@@ -39,39 +70,11 @@ $pane-width: 50vw;
     left: 100vw - $pane-width !important;
 }
 
-.spacer {
-    flex: 1 1 0;
+.scroll-to span {
+    color: $col-high-diff;
+    border-bottom: 1px solid $col-high-diff;
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-
-    span {
-        position: relative;
-        margin-left: 2em;
-        text-transform: uppercase;
-        font-weight: 300;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: color .5s;
-        cursor: pointer;
-    }
-
-    /*.mask {
-        position: absolute;
-        overflow: hidden;
-        top: -;
-        left: 0;
-        width: 100%;
-        height: 0;
-        // -webkit-text-stroke: 0.025em;
-        transition: height .3s;
-    }
-
-    a:hover .mask {
-        height: 100%;
-    }*/
+.highlight {
+    background-color: $col-high-diff;
 }

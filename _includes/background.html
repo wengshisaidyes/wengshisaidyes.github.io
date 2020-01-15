@@ -1,10 +1,10 @@
 <div class="background">
     {% for bkg in site.bkg-content %}
         {% if bkg.empty %}
-            <div class="gap snap" id="snap-{{ bkg.name }}" style="height: {{ bkg.gap }}"></div>
+            <div snap="{{ bkg.name }}" class="gap snap" id="snap-{{ bkg.name }}" style="height: {{ bkg.gap }}"></div>
         {% else %}
-            <div class="snap" id="snap-{{ bkg.name }}">
-                <div class="gap nav-spacer"></div>
+            <div snap="{{ bkg.name }}" class="snap" id="snap-{{ bkg.name }}">
+                <div class="gap nav-spacer-top"></div>
                 <div class="content-wrapper" id="content-{{ bkg.name }}">
                     {% for parallax in site.data.parallax %}
                         {% if parallax.name == bkg.name %}
@@ -34,6 +34,7 @@
                             {% endif %}
                     {% endcase %}
                 </div>
+                <div class="gap nav-spacer-bottom"></div>
             </div>
         {% endif %}
     {% endfor %}

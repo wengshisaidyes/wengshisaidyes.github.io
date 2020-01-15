@@ -1,0 +1,58 @@
+// We handle changing viewport here
+@media (max-width: 800px) {
+
+    .foreground {
+        display: none;
+    }
+
+    .placeholder {
+        display: none;
+    }
+
+    .nav-spacer-bottom {
+        display: block;
+    }
+
+    .background {
+        .content-wrapper {
+            height: 100vh - $nav-height - $nav-bottom-height;
+        }
+    }
+
+    #link-bar {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px solid $col-high-diff;
+        height: $nav-bottom-height;
+
+        div {
+            flex: 1 1 auto;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        span {
+            margin: 0;
+        }
+
+        .scroll-to {
+            background-color: $col-high-diff;
+        }
+
+        .scroll-to span {
+            border: none;
+            color: inherit;
+        }
+    }
+
+    #link-bar-background {
+        display: block;
+    }
+}

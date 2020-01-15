@@ -1,10 +1,11 @@
+<div id="link-bar-background"></div>
 <section id="navigation-bar" class="overlay slider">
     <h1>Anna & Daniel</h1>
-    <nav class="spacer">
+    <nav id="link-bar">
         {% for item in site.data.navigation %}
-            <span class="link" id="link-{{ item.name | downcase }}">
-                {{ item.name }}
-            </span>
+            <div>
+                <span snap="{{ item.link }}" class="link" id="link-{{ item.name | downcase }}">{{ item.name }}</span>
+            </div>
         {% endfor %}
     </nav>
 </section>

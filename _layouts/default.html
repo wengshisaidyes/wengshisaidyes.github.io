@@ -1,23 +1,24 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
-    <!--https://jekyllrb.com/docs/github-pages/-->
-    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
-  </head>
-  <body>
-      <div id="parallax-container" class="bg1 slider">
-          {% include foreground.html %}
-          {% include background.html %}
-      </div>
-      {% include navigation.html %}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="assets/js/jquery.serialize-object.min.js"></script>
-      <script src="assets/js/wengshisaidyes.js"></script>
-  </body>
+    <head>
+        <title>{{ page.title }}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,300,400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
+        <!--https://jekyllrb.com/docs/github-pages/-->
+        <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+    </head>
+    <body>
+        <div id="parallax-container" class="bg1 slider">
+            {% include foreground.html %}
+            {% include background.html %}
+        </div>
+        {% include navigation.html %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="assets/js/jquery.serialize-object.min.js"></script>
+        <script src="assets/js/wengshisaidyes.js"></script>
+    </body>
 </html>

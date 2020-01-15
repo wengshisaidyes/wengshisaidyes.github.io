@@ -1,58 +1,110 @@
+// Pane Opening and Closing
 var rsvp = $( " #link-rsvp " );
-var scrolling = {
-    behavior: "smooth"
-};
-var ch = $( "#__ch" ).width();
-console.log(ch);
-var $form = $(" form#rsvp "),
-  url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
+let resizeTimer;
+$( window ).resize(function() {
+    slider = $( ".slider" );
+    slider.addClass("resize-animation-stopper");
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        slider.removeClass("resize-animation-stopper");
+    }, 100);
+});
 
 rsvp.click(function() {
-    $( "#navigation-bar" ).toggleClass( "slide" );
-    $( "#parallax-container" ).toggleClass( "slide" );
-    pane = $( "#rsvp-pane" ).toggleClass( "slide-pane" );
+    nav = $( "#navigation-bar" );
+    parallax = $( "#parallax-container" );
+    pane = $( "#rsvp-pane" );
+
+    // Change location
+    nav.toggleClass( "slide" );
+    parallax.toggleClass( "slide" );
+    pane.toggleClass( "slide-pane" );
+
+    // Set correct form state (entering/sent)
     $( "#submit-form" ).val('✉ Send');
     if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ) && !pane.hasClass( "slide-pane" ))  {
         //im too lazy to do the right logic
     } else {
         $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
     }
+
     rsvp.toggleClass( "rolled-over" );
 });
 
+// Scroll handling ---------------------------------------------
+var scrolling = {
+    behavior: "smooth"
+};
 
-// Link scroll-to effects ---------------------------------------------
-
-$( "#link-when" ).click(function() {
-    if (rsvp.hasClass( "rolled-over" )) {
-        rsvp.click();
-    }
-    document.querySelector("#snap-when").scrollIntoView(scrolling);
+$( ".link" ).click(function() {
+    rsvp.hasClass( "rolled-over" ) ? rsvp.click() : null;
+    link = $( this );
+    $( "#link-bar div").removeClass("scroll-to");
+    link.parent().addClass("scroll-to");
+    snap = "#snap-".concat(link.attr("snap"));
+    console.log(snap);
+    document.querySelector(snap).scrollIntoView(scrolling);
 });
+//
+// $( "#link-where" ).click(function() {
+//     if (rsvp.hasClass( "rolled-over" )) {
+//         rsvp.click();
+//     }
+//     document.querySelector("#snap-where").scrollIntoView(scrolling);
+// });
+//
+// $( "#link-accommodations" ).click(function() {
+//     if (rsvp.hasClass( "rolled-over" )) {
+//         rsvp.click();
+//     }
+//     document.querySelector("#snap-hotel").scrollIntoView(scrolling);
+// });
+//
+// $( "#link-faq" ).click(function() {
+//     if (rsvp.hasClass( "rolled-over" )) {
+//         rsvp.click();
+//     }
+//     document.querySelector("#snap-faq").scrollIntoView(scrolling);
+// });
 
-$( "#link-where" ).click(function() {
-    if (rsvp.hasClass( "rolled-over" )) {
-        rsvp.click();
+var container = $( "#parallax-container" );
+var height = container.height()
+var waiting = false, endScroll;
+
+var scroll = function() {
+    var pos = container.scrollTop(); //CSS scroll snapping gives us the correct location
+    var target = $( ".snap" ).eq( Math.round( pos / height ) ).attr("snap");
+    target == "when" ? rsvp.addClass("highlight") : rsvp.removeClass("highlight");
+    links = $( "#link-bar div").removeClass("scroll-to");
+    links.each(function() {
+        link = $( this );
+        if (link.children().attr("snap") == target) {
+            link.addClass("scroll-to");
+            return false;
+        }
+    });
+}
+
+container.scroll(function() {
+    if (waiting) {
+        return;
     }
-    document.querySelector("#snap-where").scrollIntoView(scrolling);
-});
+    waiting = true;
+    clearTimeout(endScroll);
 
-$( "#link-accommodations" ).click(function() {
-    if (rsvp.hasClass( "rolled-over" )) {
-        rsvp.click();
-    }
-    document.querySelector("#snap-hotel").scrollIntoView(scrolling);
-});
+    setTimeout(function() {
+        waiting = false;
+    }, 50);
 
-$( "#link-faq" ).click(function() {
-    if (rsvp.hasClass( "rolled-over" )) {
-        rsvp.click();
-    }
-    document.querySelector("#snap-faq").scrollIntoView(scrolling);
+    endScroll = setTimeout(function() {
+        scroll();
+    }, 100);
 });
-
 
 // Form handling ------------------------------------------------------
+var ch = $( "#__ch" ).width();
+var $form = $(" form#rsvp "),
+  url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
 
 // Add default text (we dont have placeholder for spans); all dom elements are loaded here (theoretically?)
 $( "span[contenteditable='true']" ).each( function() {
@@ -215,6 +267,6 @@ $( '.close' ).click(function(e) {
     rsvp.click();
 });
 
-// Manually set height to 7*100vh
-// (Chrome calculates height prior to translation of parallax elements, which shift down after transform)
-//$( "#background" ).height("700vh");
+// $( '.hamburger' ).click(function() {
+//     $( this ).toggleClass("is-active");
+// });

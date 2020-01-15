@@ -1,8 +1,12 @@
-$base-size: 17.5px;
+$base-size: 14px;
+//  width    px
+//  1280     17
+//   400     14
 $outside-padding: 3vw;
 $nav-padding: 5vw;
 $nav-gap: 5vh;
 $nav-height: 3*$nav-gap;
+$nav-bottom-height: 2*$nav-gap;
 
 * {
     box-sizing: border-box;
@@ -11,10 +15,15 @@ $nav-height: 3*$nav-gap;
     text-rendering: geometricPrecision;
 }
 
+html {
+    font-size: $base-size;
+}
+
 body {
     margin: 0;
+    //font-size: $base-size;
     //font-size: 2.5vh;
-    font-size: $base-size;
+    font-size: calc(100% + 3*(100vw - 400px)/880);
 }
 
 h1, h2, h3, h4, p {
@@ -38,8 +47,13 @@ h3, h4 {
     width: 100%;
 }
 
-.nav-spacer {
+.nav-spacer-top {
     height: $nav-height;
+}
+
+.nav-spacer-bottom {
+    display: none;
+    height: $nav-bottom-height;
 }
 
 .content-wrapper {
@@ -123,6 +137,10 @@ h3, h4 {
     text-align: right;
     margin-right: 1em;
     color: #92374d;
+}
+
+.resize-animation-stopper {
+    transition-duration: 0s !important;
 }
 
 #content-when {
