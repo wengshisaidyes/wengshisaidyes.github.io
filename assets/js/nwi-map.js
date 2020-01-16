@@ -6,7 +6,8 @@ var map = new mapboxgl.Map({
   center: [-78.887, 44.139],
   zoom: 9,
   scrollZoom: false,
-  boxZoom: true
+  boxZoom: true,
+  dragPan: false
 });
 
 map.addControl(new mapboxgl.NavigationControl());
@@ -14,6 +15,21 @@ map.addControl(new mapboxgl.NavigationControl());
 // if (map.tap) {
 // 	map.tap.disable();
 // }
+
+let clickFunc = function (e) {
+    map.dragPan.enable();
+    map.off('click', clickFunc);
+};
+
+let zoomFunc = function (e) {
+    if (e.source !== 'fitBounds') {
+        map.dragPan.enable();
+        map.off('zoomend', zoomFunc);
+    }
+};
+
+map.on('click', clickFunc);
+map.on('zoomend', zoomFunc);
 
 var geojson = {
   type: 'FeatureCollection',
