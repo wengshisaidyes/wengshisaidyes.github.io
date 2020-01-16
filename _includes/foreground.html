@@ -5,6 +5,9 @@
                 <div class="foreground-image" id="img-{{ image.src }}">
                     {% if image.src == "mapbox" %}
                         {% include map.html %}
+                    {% elsif image.src == "text"%}
+                        <span class="hand stroke">We're getting married!</span>
+                        <span class="hand gold fill">We're getting married!</span>
                     {% else %}
                         <img src="assets/images/{{ image.src }}.JPG">
                     {% endif %}
@@ -12,8 +15,3 @@
             </div>
     </div>
 {% endfor %}
-<div class="foreground depth-4">
-    <div id="buffer-overlay">
-        <span>Anna & Daniel</span><span class="hand gold scrawl-ccw">are getting married!</span>
-    </div>
-</div>

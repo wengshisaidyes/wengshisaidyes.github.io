@@ -6,6 +6,7 @@ $col-anna:          #92374d;
 $col-maid1:         #eaadad;
 $col-dan:           #00a676;
 $col-highlight:     #ffd780;
+$col-stroke:        $bg1;
 
 $col-text-diff:     #ddd;
 $col-anna-diff:     #6dc8b1;
@@ -71,7 +72,6 @@ em {
 }
 
 #footer {
-    box-shadow: inset 0 1vh 1vh #0004;
     color: $bg1;
     background-color: $col-anna;
 }
@@ -95,7 +95,7 @@ em {
     }
 }
 
-.foreground-image {
+.foreground-image:not(#img-text) {
     background: repeating-linear-gradient(
         45deg,
         $col-highlight,
@@ -140,5 +140,18 @@ em {
 }
 
 .gold {
-    color: $col-highlight
+    color: $col-highlight;
+}
+
+.stroke {
+    color: $col-stroke;
+    -webkit-text-fill-color: $col-stroke;
+    -webkit-text-stroke-width: 8px;
+    -webkit-text-stroke-color: $col-stroke;
+}
+
+.fill {
+    position: absolute;
+    left: 0;
+    top: 0;
 }

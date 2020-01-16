@@ -1,4 +1,6 @@
+// ------------------------------------------------------------------
 // Pane Opening and Closing
+// ------------------------------------------------------------------
 var rsvp = $( " #link-rsvp " );
 let resizeTimer;
 $( window ).resize(function() {
@@ -31,7 +33,7 @@ rsvp.click(function() {
     rsvp.toggleClass( "rolled-over" );
 });
 
-// Scroll handling ---------------------------------------------
+// Scroll handling
 var scrolling = {
     behavior: "smooth"
 };
@@ -80,7 +82,9 @@ container.scroll(function() {
     }, 100);
 });
 
-// Form handling ------------------------------------------------------
+// ------------------------------------------------------------------
+// Form handling
+// ------------------------------------------------------------------
 var ch = $( "#__ch" ).width();
 var $form = $(" form#rsvp "),
   url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
@@ -179,14 +183,20 @@ $( "select" ).change(function() {
     }
 
     // Decision handling, we are assuming binary decisions
-    decision = select.next().filter( ".decision" );
-    if (decision.length > 0) {
-        choices = decision.children().filter( ".choice" );
-        if (!choices.hasClass( "chosen" )) {
-            choices.first().addClass( "chosen" );
-        } else {
-            choices.toggleClass( "chosen" );
-        }
+    // decision = select.next().filter( ".decision" );
+    // if (decision.length > 0) {
+        // choices = decision.children().filter( ".choice" );
+        // if (!choices.hasClass( "chosen" )) {
+        //     choices.first().addClass( "chosen" );
+        // } else {
+        //     choices.toggleClass( "chosen" );
+        // }
+    // }
+    choice = select.next().filter(".choice");
+    if (!choice.hasClass( "chosen" )) {
+        choice.addClass( "chosen" )
+    } else {
+        choice.toggleClass( "chosen" ).next().toggleClass( "chosen" );
     }
 
     if (select.attr("edited") == "false") {
@@ -245,7 +255,3 @@ $( "#submit-form" ).on('click', function(e) {
 $( '.close' ).click(function(e) {
     rsvp.click();
 });
-
-// $( '.hamburger' ).click(function() {
-//     $( this ).toggleClass("is-active");
-// });

@@ -25,14 +25,14 @@
     transform-origin: center 50vh;
     //transform-origin: bottom right; //this might fix the chrome over-scroll problem
 
-    img {
-        position: absolute;
-    }
+    // img {
+    //     position: absolute;
+    // }
 }
 
 .depth-1 {
     transform: translateZ(1px) scale(0.875);
-    z-index: 99;
+    z-index: 20;
 }
 
 .depth-2 {
@@ -45,6 +45,7 @@
 
 .depth-4 {
     transform: translateZ(4px) scale(0.5);
+    z-index: 10;
 }
 
 .foreground-image {
@@ -52,6 +53,18 @@
     border-radius: 0.5em;
     overflow: hidden;
     background-clip: content-box;
+
+    img {
+        object-fit: cover;
+    //  flex: 0;
+    //  bottom: 0;
+    //  left: 50%;
+    //  transform-origin: bottom center;
+    }
+}
+
+.foreground-image:not(#img-mapbox) {
+    //display: flex;
 }
 
 %foreground-layout {
@@ -78,23 +91,27 @@
     margin-top: $nav-height;
 }
 
-#buffer-overlay {
-    height: $nav-height;
-    padding-left: $nav-padding;
-    font-size: 2em;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+// #buffer-overlay {
+//     height: $nav-height;
+//     padding-left: $nav-padding;
+//     font-size: 2em;
+//     display: flex;
+//     align-items: center;
+//     justify-content: flex-start;
+//
+//     span:first-of-type {
+//         visibility: hidden;
+//         margin-right: 0.5em;
+//         text-transform: uppercase;
+//     }
+//
+//     span:last-of-type {
+//         margin-bottom: -0.2em;
+//     }
+// }
 
-    span:first-of-type {
-        visibility: hidden;
-        margin-right: 0.5em;
-        text-transform: uppercase;
-    }
-
-    span:last-of-type {
-        margin-bottom: -0.2em;
-    }
+#buffer-text {
+    height: $nav-gap/2;
 }
 
 #buffer-202 {
@@ -102,7 +119,7 @@
 }
 
 #buffer-146 {
-    height: 133.3vh; //depth 2
+    height: 133.3321vh; //depth 2
 }
 
 #buffer-mapbox {
@@ -114,7 +131,7 @@
 }
 
 #buffer-109 {
-    height: 4*133.3vh;
+    height: 4*133.3321vh;
 }
 
 #buffer-22 {
@@ -122,18 +139,25 @@
 }
 
 #buffer-57 {
-    height: 6*133.3vh;
+    height: 6*133.3321vh;
+}
+
+#img-text {
+    font-size: 4em;
+    overflow: visible;
+    text-align: center;
 }
 
 #img-202 {
     height: 100vh - $nav-height + 5vh;
     width: 100%;
+    //justify-content: center;
 
     img {
-        bottom: 0;
-        left: 50%;
-        transform-origin: bottom center;
-        transform: translate(-50%, 5%) scale(0.25);
+        //transform: translate(-50.5%, 5%) scale(0.25);
+        width: 100%;
+        height: 100%;
+        //margin-right: 10%;
     }
 }
 
@@ -142,10 +166,9 @@
     width: 30%;
 
     img {
-        bottom: 0;
-        left: 50%;
-        transform-origin: bottom center;
-        transform: translate(-50.5%, 3.4%) scale(0.16);
+        //transform: translate(-50.5%, 3.4%) scale(0.16);
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -156,13 +179,12 @@
 
 #img-125 {
     height: 100vh - $nav-height - $nav-gap;
-    width: 60%;
+    width: 50%;
 
     img {
-        bottom: 0;
-        left: 50%;
-        transform-origin: bottom center;
-        transform: translate(-49.5%, 0%) scale(0.16);
+        //transform: translate(-49.5%, 0%) scale(0.16);
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -171,10 +193,9 @@
     width: 100%;
 
     img {
-        bottom: 0;
-        left: 50%;
-        transform-origin: bottom center;
-        transform: translate(-50%, 0%) scale(0.24);
+        //transform: translate(-50%, 0%) scale(0.24);
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -183,22 +204,20 @@
     width: 30%;
 
     img {
-        bottom: 0;
-        left: 50%;
-        transform-origin: bottom center;
-        transform: translate(-50%, 0%) scale(0.12);
+        //transform: translate(-50%, 0%) scale(0.12);
+        width: 100%;
+        height: 100%;
     }
 }
 
 #img-57 {
-    height: 100vh - $nav-height - 2*$nav-gap;
+    height: 100vh - $nav-height - $footer-height;
     width: 100%;
     border-radius: 0.5em 0.5em 0 0;
 
     img {
-        bottom: 0;
-        left: 50%;
-        transform-origin: bottom center;
-        transform: translate(-50%, 3%) scale(0.235);
+        // transform: translate(-50%, 3%) scale(0.235);
+        width: 100%;
+        height: 100%;
     }
 }

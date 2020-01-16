@@ -1,47 +1,10 @@
 // We handle changing viewport here
-@media (max-width: 1000px) {
-    //this handles prior to mobile breakpoint where some squeezing occurs
+
+#parallax-container, #navigation-bar, body, #rsvp-pane {
+    min-width: 340px;
 }
 
-@media (max-width: 625px) { //current date/time squeeze point
-    #content-when {
-
-        em {
-            display: block;
-            text-align: center;
-            line-height: 1.25em;
-        }
-
-        em:nth-child(4) {
-            font-size: 2em;
-            margin-bottom: -0.2em;
-        }
-
-        h2, h3, h4 {
-            transform: none;
-        }
-
-        h3 {
-            margin-top: 0.5em;
-        }
-
-        .break {
-            display: none;
-        }
-    }
-}
-
-@media (max-width: 475px) { //top bar squeeze
-    #navigation-bar {
-        //justify-content: flex-start;
-    }
-
-    .map-link {
-        font-size: 0.8em;
-    }
-}
-
-@media (max-width: 800px) {
+@media (max-width: 810px) and (min-height: 400px) {
 
     .placeholder {
         display: none;
@@ -82,11 +45,32 @@
         height: $nav-top-height;
     }
 
+    #img-202, #img-109 {
+        height: 100vh - $nav-top-height;
+    }
+
     #img-mapbox {
         //margin-top: 1px; // account for border overlap
         height: 100vh - $nav-top-height - $nav-bottom-height;
     }
 
+    #img-57 {
+        height: 100vh - $nav-top-height - $footer-height-bump - $nav-bottom-height;
+    }
+
+    #footer {
+        height: $footer-height-bump;
+
+        ul {
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        li {
+            flex: 0;
+            margin-top: 0.2em;
+        }
+    }
     // Navigation
     #navigation-bar {
         height: $nav-top-height;
@@ -214,4 +198,50 @@
         background-clip: border-box;
     }
 
+}
+
+@media (max-width: 625px) { //First date/time squeeze point
+    #content-when {
+
+        em {
+            display: block;
+            text-align: center;
+            line-height: 1.25em;
+        }
+
+        em:nth-child(3) {
+            font-size: 2em;
+            margin-bottom: -0.2em;
+        }
+
+        h2, h3, h4 {
+            transform: none;
+        }
+
+        h3 {
+            margin-top: 0.5em;
+        }
+
+        .break {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 485px) { //Map-link squeeze
+    .map-link p {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 400px) { //Second date/time squeeze and faq overflow
+    #content-when {
+        font-size: 1.75em;
+    }
+    .map-link p {
+        font-size: 0.7em; // Good till w: 355px
+    }
+    #content-faq {
+        font-size: 0.95em;
+    }
 }

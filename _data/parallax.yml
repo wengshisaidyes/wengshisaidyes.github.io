@@ -1,3 +1,7 @@
+- src: text
+  name: banner
+  type: center
+  z: 4
 - src: 202
   name: splash
   type: center
