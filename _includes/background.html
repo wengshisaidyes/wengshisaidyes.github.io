@@ -1,9 +1,9 @@
 <div class="background">
     {% for bkg in site.bkg-content %}
         {% if bkg.empty %}
-            <div snap="{{ bkg.name }}" class="gap snap" id="snap-{{ bkg.name }}" style="height: {{ bkg.gap }}"></div>
+            <div snap="{{ bkg.name }}" class="gap" id="snap-{{ bkg.name }}" style="height: {{ bkg.gap }}"></div>
         {% else %}
-            <div snap="{{ bkg.name }}" class="snap" id="snap-{{ bkg.name }}">
+            <div snap="{{ bkg.name }}" id="snap-{{ bkg.name }}">
                 <div class="gap nav-spacer-top"></div>
                 <div class="content-wrapper" id="content-{{ bkg.name }}">
                     {% for parallax in site.data.parallax %}

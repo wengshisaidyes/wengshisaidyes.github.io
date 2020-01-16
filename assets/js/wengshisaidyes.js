@@ -4,8 +4,6 @@
 var rsvp = $( " #link-rsvp " );
 let resizeTimer;
 
-$(window).scrollTop(0);
-
 $( window ).resize(function() {
     slider = $( ".slider" );
     slider.addClass("resize-animation-stopper");
@@ -40,6 +38,9 @@ rsvp.click(function() {
 var scrolling = {
     behavior: "smooth"
 };
+
+$( "#parallax-container" ).scrollTop(0);
+$(".background div" ).addClass("snap");
 
 links = $( ".link" );
 links.click(function() {
@@ -103,9 +104,7 @@ $( "span[contenteditable='true']" ).each( function() {
 // On the way in we remove the contents if its default...
 $( "span[contenteditable='true']" ).click(function(e) {
     input = $( this );
-    console.log("CLICK");
     if (input.attr("edited") == "false") {
-        console.log("NANI");
         input.text("");
         input.attr("edited", "true");
         input.keyup();
