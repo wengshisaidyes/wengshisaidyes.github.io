@@ -12,8 +12,6 @@ var map = new mapboxgl.Map({
 
 map.addControl(new mapboxgl.NavigationControl());
 
-
-
 //https://github.com/mapbox/mapbox-gl-js/issues/2618
     let clickFunc = function (e) {
         map.dragPan.enable();

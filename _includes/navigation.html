@@ -1,6 +1,5 @@
 <section id="navigation-bar" class="overlay slider">
-    <h1>Anna & Daniel</h1>
-    <span class="hand gold scrawl-ccw">are getting married!</span>
+    <h1><span id="title">Anna & Daniel</span><span id="subtitle" class="hand gold scrawl-ccw">are getting married!</span></h1>
     <nav id="link-bar">
         {% for item in site.data.navigation %}
             <div {% if item.link %}class="link" snap="{{ item.link }}"{% endif %}{% unless item.link %}id="rsvp-button"{% endunless %}>

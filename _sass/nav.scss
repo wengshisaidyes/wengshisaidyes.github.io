@@ -15,12 +15,17 @@ $pane-width: 50vw;
     height: $nav-height;
     user-select: none;
 
-    h1 {
-        text-align: left;
-        text-transform: uppercase;
-        font-weight: 200;
-        font-size: 2em;
-    }
+
+}
+
+#title {
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 200;
+}
+
+#subtitle {
+    margin-left: 0.35em;
 }
 
 #link-bar {
@@ -32,7 +37,6 @@ $pane-width: 50vw;
 
     span {
         position: relative;
-        margin-left: 2em;
         text-transform: capitalize;
         font-weight: 300;
         display: inline-flex;
@@ -40,6 +44,10 @@ $pane-width: 50vw;
         align-items: center;
         transition: border-color .5s;
         cursor: pointer;
+    }
+
+    .link {
+        margin-right: 1.5em;
     }
 
     img {

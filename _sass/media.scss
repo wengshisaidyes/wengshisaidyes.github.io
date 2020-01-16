@@ -4,6 +4,12 @@
     min-width: 340px;
 }
 
+@media (max-width: 1000px) {
+    #subtitle {
+        display: none;
+    }
+}
+
 @media (max-width: 810px) and (min-height: 400px) {
 
     .placeholder {
@@ -101,6 +107,7 @@
             align-items: center;
             font-size: 0.8em;
             color: $bg1;
+            margin: 0;
         }
 
         img {
@@ -109,10 +116,6 @@
             filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(41deg) brightness(109%) contrast(101%);
             height: 0.75*$nav-gap;
             cursor: pointer;
-        }
-
-        span {
-            margin: 0;
         }
 
         .scroll-to span {
@@ -142,6 +145,10 @@
         padding-top: $nav-top-height;
         padding-left: 2*$outside-padding;
         padding-right: 2*$outside-padding;
+    }
+
+    #subtitle {
+        display: inline-block;
     }
 
     .submit-button {
@@ -228,6 +235,10 @@
         .break {
             display: none;
         }
+    }
+
+    #subtitle {
+        display: none;
     }
 }
 

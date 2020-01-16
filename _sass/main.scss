@@ -36,12 +36,11 @@ h1, h2, h3, h4, p {
     margin: 0;
 }
 
-//need to rectify the following header font sizes
-h1 {
-    font-size: 3.375em;
+h1 { // Only used for title
+    font-size: 2em;
 }
 
-h2 {
+h2 { // Used for content headers
     font-size: 2.25em;
 }
 

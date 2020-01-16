@@ -40,7 +40,7 @@ var scrolling = {
 };
 
 $( "#parallax-container" ).scrollTop(0);
-$(".background div" ).addClass("snap");
+$(".background div[snap]" ).addClass("snap");
 
 links = $( ".link" );
 links.click(function() {
