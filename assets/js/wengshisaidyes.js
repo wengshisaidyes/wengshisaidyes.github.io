@@ -34,7 +34,9 @@ rsvp.click(function() {
     rsvp.toggleClass( "rolled-over" );
 });
 
+// ------------------------------------------------------------------
 // Scroll handling
+// ------------------------------------------------------------------
 var scrolling = {
     behavior: "smooth"
 };

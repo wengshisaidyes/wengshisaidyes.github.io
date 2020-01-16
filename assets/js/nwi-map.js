@@ -19,20 +19,20 @@ var map = new mapboxgl.Map(mapData);
 map.addControl(new mapboxgl.NavigationControl());
 
 //https://github.com/mapbox/mapbox-gl-js/issues/2618
-    // let clickFunc = function (e) {
-    //     map.dragPan.enable();
-    //     map.off('click', clickFunc);
-    // };
-    //
-    // let zoomFunc = function (e) {
-    //     if (e.source !== 'fitBounds') {
-    //         map.dragPan.enable();
-    //         map.off('zoomend', zoomFunc);
-    //     }
-    // };
-    //
-    // map.on('click', clickFunc);
-    // map.on('zoomend', zoomFunc);
+    /*let clickFunc = function (e) {
+        map.dragPan.enable();
+        map.off('click', clickFunc);
+    };
+
+    let zoomFunc = function (e) {
+        if (e.source !== 'fitBounds') {
+            map.dragPan.enable();
+            map.off('zoomend', zoomFunc);
+        }
+    };
+
+    map.on('click', clickFunc);
+    map.on('zoomend', zoomFunc);*/
 
 const isTouchEvent = e => e.originalEvent && "touches" in e.originalEvent;
 const isTwoFingerTouch = e => e.originalEvent.touches.length >= 2;
@@ -49,8 +49,6 @@ map.on("touchstart", event => {
    map.dragPan.enable();
 }
 });
-
-
 
 var geojson = {
   type: 'FeatureCollection',
