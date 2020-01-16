@@ -61,11 +61,11 @@ h4 {
 .nav-spacer-top {
     height: $nav-height;
 }
-
-.nav-spacer-bottom {
-    display: none;
-    height: $nav-bottom-height;
-}
+//
+// .nav-spacer-bottom {
+//     display: none;
+//     height: $nav-bottom-height;
+// }
 
 .content-wrapper {
     display: flex;
@@ -78,8 +78,6 @@ h4 {
     left: 0;
     right: 0;
     transform: translateZ(0px);*/
-
-    min-width: $min-width;
 
     .content-wrapper {
         margin-left: $outside-padding;
@@ -215,7 +213,8 @@ h4 {
 
 #content-footer {
     align-items: flex-end;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
 
     ~.nav-spacer-bottom {
         background-color: $col-anna;

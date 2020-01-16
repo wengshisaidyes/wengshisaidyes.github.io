@@ -13,16 +13,20 @@
     .nav-spacer-top {
         height: $nav-top-height;
     }
-
-    .nav-spacer-bottom {
-        display: block;
-        background-color: green;
-    }
+    //
+    // .nav-spacer-bottom {
+    //     display: block;
+    // }
 
     .background {
 
-        .content-wrapper {
+        .content-wrapper:not(#content-footer) {
+            margin-bottom: $nav-bottom-height;
             height: 100vh - $nav-top-height - $nav-bottom-height;
+        }
+
+        #content-footer {
+            height: 100vh - $nav-top-height;
         }
 
     }
@@ -61,6 +65,7 @@
 
     #footer {
         height: $footer-height-bump;
+        margin-bottom: $nav-bottom-height;
 
         ul {
             flex-direction: column;
@@ -72,6 +77,7 @@
             margin-top: 0.2em;
         }
     }
+
     // Navigation
     #navigation-bar {
         height: $nav-top-height;
