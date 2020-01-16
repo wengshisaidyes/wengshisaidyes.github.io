@@ -1,32 +1,56 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHJheXJzIiwiYSI6ImNrM3FjazBpejAwOTQzam51aGR1YXVnN3IifQ.8qNcA8Pofrg1Ud_bSl9Hmg';
 
-var map = new mapboxgl.Map({
+mapData = {
   container: 'nwi-map',
   style: 'mapbox://styles/drayrs/ck58qmky20y1t1cnwat40g5y2',
   center: [-78.887, 44.139],
   zoom: 8,
   scrollZoom: false,
   boxZoom: true,
-  dragPan: false
-});
+  dragPan: true
+}
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    mapData["dragPan"] = false;
+}
+
+var map = new mapboxgl.Map(mapData);
 
 map.addControl(new mapboxgl.NavigationControl());
 
 //https://github.com/mapbox/mapbox-gl-js/issues/2618
-    let clickFunc = function (e) {
-        map.dragPan.enable();
-        map.off('click', clickFunc);
-    };
+    // let clickFunc = function (e) {
+    //     map.dragPan.enable();
+    //     map.off('click', clickFunc);
+    // };
+    //
+    // let zoomFunc = function (e) {
+    //     if (e.source !== 'fitBounds') {
+    //         map.dragPan.enable();
+    //         map.off('zoomend', zoomFunc);
+    //     }
+    // };
+    //
+    // map.on('click', clickFunc);
+    // map.on('zoomend', zoomFunc);
 
-    let zoomFunc = function (e) {
-        if (e.source !== 'fitBounds') {
-            map.dragPan.enable();
-            map.off('zoomend', zoomFunc);
-        }
-    };
+const isTouchEvent = e => e.originalEvent && "touches" in e.originalEvent;
+const isTwoFingerTouch = e => e.originalEvent.touches.length >= 2;
 
-map.on('click', clickFunc);
-map.on('zoomend', zoomFunc);
+map.on("dragstart", event => {
+if (isTouchEvent(event) && !isTwoFingerTouch(event)) {
+   map.dragPan.disable();
+}
+});
+
+// Drag events not emited after dragPan disabled, so I use touch event here
+map.on("touchstart", event => {
+  if (isTouchEvent(event) && isTwoFingerTouch(event)) {
+   map.dragPan.enable();
+}
+});
+
+
 
 var geojson = {
   type: 'FeatureCollection',
