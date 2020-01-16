@@ -10,6 +10,10 @@ var map = new mapboxgl.Map({
 });
 
 map.addControl(new mapboxgl.NavigationControl());
+//map.dragPan.disable();
+// if (map.tap) {
+// 	map.tap.disable();
+// }
 
 var geojson = {
   type: 'FeatureCollection',

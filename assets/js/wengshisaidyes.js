@@ -3,6 +3,9 @@
 // ------------------------------------------------------------------
 var rsvp = $( " #link-rsvp " );
 let resizeTimer;
+
+$(window).scrollTop(0);
+
 $( window ).resize(function() {
     slider = $( ".slider" );
     slider.addClass("resize-animation-stopper");
