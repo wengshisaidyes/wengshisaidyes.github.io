@@ -210,48 +210,49 @@ $( "option.select-default" ).prop("hidden", true);
 // Form event
 $( "#submit-form" ).on('click', function(e) {
     e.preventDefault();
-
-    var required_flag = false;
-
     $( "#submit-form" ).prop("disabled", true);
 
     // Set the values of the submission input set
     submission = $( "#shadow-realm" ).children( "input" );
     submission.each( function() {
-
-        var input = $( this )
+        var input = $( this );
         var source = $( "#" + input.attr("id") + "-sur" );
-        var value, default;
-        if (source.is( "select" )) {
-            value = source.val();
-            default = source.children("option[selected=selected]").text();
-            // We don't need the rest of the entries if declined
-            if (value == "must decline") {
-                input.val( false );
-                return false;
-            }
-            if (value == default) {
-                value == "am happy to accept" ? value = true : value = "";
-            } else {
-                value == "Yes" ? value = true
-              : value == "No" ? value = false
-              : value = value;
-            }
-        } else if (source.is( "span" )) {
-            value = source.text();
-            default = source.attr("default");
-            if (value == default) {
-                value = "";
-            } else if (value.charAt(0) == '=') {
-                value = "FUNCTION ATTEMPT";
+        var invisible_flag = source.parentsUntil( "#form-wrapper" ).is( ".fieldset-hidden-in-the-html" );
+        var not_chosen_flag = source.parentsUntil( "fieldset" ).is( ".chosen" ) || source.parentsUntil( "fieldset" ).length == 0;
+        var value = "";
+        if (!invisible_flag && not_chosen_flag) {
+            var defaultText;
+            if (source.is( "select" )) {
+                value = source.val();
+                defaultText = source.children("option[selected=selected]").text();
+                // We don't need the rest of the entries if declined
+                if (value == "must decline") {
+                    input.val( false );
+                    return false;
+                }
+                if (value == defaultText) {
+                    value == "am happy to accept" ? value = true : value = "";
+                } else {
+                    value == "Yes" ? value = true
+                  : value == "No" ? value = false
+                  : value = value;
+                }
+            } else if (source.is( "span" )) {
+                value = source.text();
+                defaultText = source.attr("default");
+                if (value == defaultText) {
+                    value = "";
+                } else if (value.charAt(0) == '=') {
+                    value = "FUNCTION ATTEMPT";
+                }
             }
         }
-
         input.val( value );
     });
 
     // We need code here to redirect the user to fill fields that arent full, or have bad inputs
     // Input validation also needs to go here; currently the above just handles defaults
+    var required_flag = false;
     submission.filter( "input[required]" ).each(function() {
         input = $( this );
         if (input.val() == "") {
