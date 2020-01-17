@@ -24,7 +24,7 @@ rsvp.click(function() {
     pane.toggleClass( "slide-pane" );
 
     // Set correct form state (entering/sent)
-    $( "#submit-form" ).val('✉ Send');
+    $( "#submit-form" ).val('✉ Send').prop("disabled", false);
     if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ) && !pane.hasClass( "slide-pane" ))  {
         //im too lazy to do the right logic
     } else {
@@ -176,44 +176,32 @@ $( "select" ).change(function() {
     width = shadow.width();
     shadow.remove();
 
-    select.width( width + 8 ); //8px is the padding Firefox gives to option elements
+    select.width(width+8); //8px is the padding Firefox gives to option elements
 
-    if ( select.is( "#guest-sur" ) ) {
-        if ( option.val() == "Yes" ) {
-            $( "#guest-field" ).removeClass( "fieldset-hidden-in-the-html" );
-        } else {
-            $( "#guest-field" ).addClass( "fieldset-hidden-in-the-html" );
-        }
-    }
-
-    // Decision handling, we are assuming binary decisions
-    // decision = select.next().filter( ".decision" );
-    // if (decision.length > 0) {
-        // choices = decision.children().filter( ".choice" );
-        // if (!choices.hasClass( "chosen" )) {
-        //     choices.first().addClass( "chosen" );
-        // } else {
-        //     choices.toggleClass( "chosen" );
-        // }
-    // }
     choice = select.next().filter(".choice");
-    if (!choice.hasClass( "chosen" )) {
-        choice.addClass( "chosen" )
+
+    // Initial select.change() sets up edited property and choice
+    // Next select.change() sets to edited state
+    if (typeof select.attr("edited") == "undefined") {
+        choice.addClass( "chosen" );
+        select.attr("edited", "false");
     } else {
-        choice.toggleClass( "chosen" ).next().toggleClass( "chosen" );
+        select.attr("edited", "true");
     }
 
-    if (select.attr("edited") == "false") {
-        select.attr("edited", "true");
+    // If in edited state, we can swap choices and/or smoke-bomb (eg #guest-sur does both)
+    if (select.attr("edited") == "true") {
+        choice.toggleClass( "chosen" ).next().toggleClass( "chosen" );
+        if ( select.is( ".smoke-bomb" ) ) {
+            nextFieldset = select.siblings("fieldset");
+            nextFieldset.toggleClass( "fieldset-hidden-in-the-html" );
+        }
     }
 });
 
 // Trigger change at least once on each to set width and initial decision
 $( "select" ).each(function() {
-    select = $( this );
-    select.change();
-    //input.keyup();
-    select.attr("edited", "false");
+    $( this ).change();
 });
 
 // Set all the default options to hidden; still rendered as initial value
@@ -223,24 +211,57 @@ $( "option.select-default" ).prop("hidden", true);
 $( "#submit-form" ).on('click', function(e) {
     e.preventDefault();
 
-    $( "#submit-form" ).val('...');
-    //$( "#rsvp fieldset" ).prop("disabled", true);
+    $( "#submit-form" ).val('...').prop("disabled", true);
     $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
 
-    $( "#name" ).val( $( "#name-sur" ).text() );
+    submission = $( "#shadow-realm" ).children( "input" );
+
+    submission.each( function() {
+
+        var input = $( this )
+        var source = $( "#" + input.attr("id") + "-sur" );
+        var value;
+        if (source.is( "select" )) {
+
+            value = source.val();
+
+            // We don't need the rest of the entries if declined
+            if (value == "must decline") {
+                input.val( false );
+                return false;
+            }
+
+          if (value == source.children("option[selected=selected]").text()) {
+              value = "";
+          } else {
+              // Input translation
+              value == "Yes" ? value = true
+            : value == "No" ? value = false
+            : value == "am happy to accept" ? value = true
+            : value = value
+          }
+
+        } else {
+            value = source.text();
+            if (value == source.attr("default")) {
+                value = "";
+            } // Input translation in else
+        }
+
+        input.val( value );
+    });
+
+    /* $( "#name" ).val( $( "#name-sur" ).text() );
+    $( "#accept" ).val( $( "#accept-sur" ).val() );
     $( "#entree" ).val( $( "#entree-sur" ).val() );
     $( "#diet" ).val( $( "#diet-sur" ).val());
     $( "#restrictions" ).val( $( "#restrictions-sur" ).text() );
     $( "#guest" ).val( $( "#guest-sur" ).val() );
     $( "#guest-name" ).val( $( "#guest-name-sur" ).text() );
     $( "#guest-entree" ).val( $( "#guest-entree-sur" ).val() );
-    $( "#guest-diet" ).val( $( "#guest-diet-sur" ).val() + $( "#guest-diet-sur-details" ).text() );
+    $( "#guest-diet" ).val( $( "#guest-diet-sur" ).val() );
     $( "#guest-restrictions" ).val( $( "#guest-restrictions-sur" ).text() );
-    $( "#song" ).val( $( "#song-sur" ).text() );
-
-    $( "input[type='text']" ).each(function() {
-      console.log($( this ).val());
-    });
+    $( "#song" ).val( $( "#song-sur" ).text() );*/
 
     var jqxhr = $.ajax({
         url: url,
