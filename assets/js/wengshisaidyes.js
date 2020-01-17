@@ -221,30 +221,30 @@ $( "#submit-form" ).on('click', function(e) {
 
         var input = $( this )
         var source = $( "#" + input.attr("id") + "-sur" );
-        var value;
+        var value, default;
         if (source.is( "select" )) {
-
             value = source.val();
-
+            default = source.children("option[selected=selected]").text();
             // We don't need the rest of the entries if declined
             if (value == "must decline") {
                 input.val( false );
                 return false;
             }
-
-          if (value == source.children("option[selected=selected]").text()) {
-              value == "am happy to accept" ? value = true : value = "";
-          } else {
-              value == "Yes" ? value = true
-            : value == "No" ? value = false
-            : value = value
-          }
-
-        } else {
+            if (value == default) {
+                value == "am happy to accept" ? value = true : value = "";
+            } else {
+                value == "Yes" ? value = true
+              : value == "No" ? value = false
+              : value = value;
+            }
+        } else if (source.is( "span" )) {
             value = source.text();
-            if (value == source.attr("default")) {
+            default = source.attr("default");
+            if (value == default) {
                 value = "";
-            } // Input translation in else
+            } else if (value.charAt(0) == '=') {
+                value = "FUNCTION ATTEMPT";
+            }
         }
 
         input.val( value );
