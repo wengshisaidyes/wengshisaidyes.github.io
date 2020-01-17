@@ -40,6 +40,7 @@ $col-form-input: $col-highlight;
 
     // Form elements
     // We are using select, input[submit], and span instead of input[text]
+
     select {
         @extend %prevent-default;
         color: $col-form-input;
@@ -70,6 +71,11 @@ $col-form-input: $col-highlight;
 
     span[edited="false"], select[edited="false"] {
         color: rgba($col-form-input, 0.6);
+    }
+
+    span[edited="false"].required {
+        color: purple;
+        border-color: purple;
     }
 
     .empty { // For the editable span above, needs to not disappear

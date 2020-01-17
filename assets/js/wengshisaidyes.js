@@ -149,7 +149,7 @@ $( "span[contenteditable='true']" ).keyup(function(e) {
     if (input.text().length < 1) {
         input.addClass( "empty" );
     } else {
-        input.removeClass( "empty" );
+        input.removeClass( "empty" ).removeClass("required");
     }
 });
 
@@ -211,11 +211,12 @@ $( "option.select-default" ).prop("hidden", true);
 $( "#submit-form" ).on('click', function(e) {
     e.preventDefault();
 
-    $( "#submit-form" ).val('...').prop("disabled", true);
-    $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
+    var required_flag = false;
 
+    $( "#submit-form" ).prop("disabled", true);
+
+    // Set the values of the submission input set
     submission = $( "#shadow-realm" ).children( "input" );
-
     submission.each( function() {
 
         var input = $( this )
@@ -232,12 +233,10 @@ $( "#submit-form" ).on('click', function(e) {
             }
 
           if (value == source.children("option[selected=selected]").text()) {
-              value = "";
+              value == "am happy to accept" ? value = true : value = "";
           } else {
-              // Input translation
               value == "Yes" ? value = true
             : value == "No" ? value = false
-            : value == "am happy to accept" ? value = true
             : value = value
           }
 
@@ -251,30 +250,34 @@ $( "#submit-form" ).on('click', function(e) {
         input.val( value );
     });
 
-    /* $( "#name" ).val( $( "#name-sur" ).text() );
-    $( "#accept" ).val( $( "#accept-sur" ).val() );
-    $( "#entree" ).val( $( "#entree-sur" ).val() );
-    $( "#diet" ).val( $( "#diet-sur" ).val());
-    $( "#restrictions" ).val( $( "#restrictions-sur" ).text() );
-    $( "#guest" ).val( $( "#guest-sur" ).val() );
-    $( "#guest-name" ).val( $( "#guest-name-sur" ).text() );
-    $( "#guest-entree" ).val( $( "#guest-entree-sur" ).val() );
-    $( "#guest-diet" ).val( $( "#guest-diet-sur" ).val() );
-    $( "#guest-restrictions" ).val( $( "#guest-restrictions-sur" ).text() );
-    $( "#song" ).val( $( "#song-sur" ).text() );*/
-
-    var jqxhr = $.ajax({
-        url: url,
-        method: "GET",
-        dataType: "json",
-        data: $form.serializeObject()
-    }).done( function() {
-        // this does not validate success!
-        $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
-        $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
-        //$( "#rsvp fieldset" ).prop("disabled", false);
-        $( "#submit-form" ).val('✔');
+    // We need code here to redirect the user to fill fields that arent full, or have bad inputs
+    // Input validation also needs to go here; currently the above just handles defaults
+    submission.filter( "input[required]" ).each(function() {
+        input = $( this );
+        if (input.val() == "") {
+            $( "#" + input.attr("id") + "-sur" ).addClass("required");
+            required_flag = true;
+        }
     });
+
+    if (required_flag) {
+        $( "#submit-form" ).val(':(').prop("disabled", false).addClass("required"); // Get back to work!
+    } else {
+        $( "#submit-form" ).val('...');
+        $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
+        var jqxhr = $.ajax({
+            url: url,
+            method: "GET",
+            dataType: "json",
+            data: $form.serializeObject()
+        }).done( function() {
+            // this does not validate success!
+            $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
+            $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
+            //$( "#rsvp fieldset" ).prop("disabled", false);
+            $( "#submit-form" ).val('✔');
+        });
+    }
 });
 
 $( '.close' ).click(function(e) {
