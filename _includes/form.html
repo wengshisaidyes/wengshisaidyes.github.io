@@ -4,7 +4,7 @@
         <p class="bridesmaid">Ready to RSVP?</p>
         <br/>
         <fieldset id="accept-field">
-            <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false" default="Your Name"></span><span>&nbsp;and I</span>
+            <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false" autocomplete="off" default="Your Name"></span><span>&nbsp;and I</span>
             <select id="accept-sur" class="smoke-bomb" autocomplete="off">
                 <option selected="selected">am happy to accept</option>
                 <option>must decline</option>
@@ -27,7 +27,7 @@
                 <select id="diet-sur" autocomplete="off">
                     <option selected="selected">No</option>
                     <option>Yes</option>
-                </select><span class="choice">.</span><span class="choice">, I need to avoid&nbsp;<span id="restrictions-sur" contenteditable="true" spellcheck="false" default="Dietary Restrictions"></span>.</span>
+                </select><span class="choice">.</span><span class="choice">, I need to avoid&nbsp;<span id="restrictions-sur" contenteditable="true" spellcheck="false" autocomplete="off" default="Dietary Restrictions"></span>.</span>
                 <br/>
                 <br/>
                 <span class="bridesmaid">Planning on bringing anyone?</span>
@@ -39,7 +39,7 @@
                 <br/>
                 <br/>
                 <fieldset id="guest-field" class="fieldset-hidden-in-the-html">
-                    <span>My guest's name is&nbsp;</span><span id="guest-name-sur" contenteditable="true" spellcheck="false" default="Guest's Name"></span><span>&nbsp;and they would like</span>
+                    <span>My guest's name is&nbsp;</span><span id="guest-name-sur" contenteditable="true" spellcheck="false" autocomplete="off" default="Guest's Name"></span><span>&nbsp;and they would like</span>
                     <select id="guest-entree-sur" autocomplete="off">
                         <option class="select-default" selected="selected">Entrée</option>
                         <option>Beef</option>
@@ -54,19 +54,19 @@
                     <select id="guest-diet-sur" autocomplete="off">
                         <option selected="selected">No</option>
                         <option>Yes</option>
-                    </select><span class="choice">.</span><span class="choice">, they need to avoid&nbsp;<span id="guest-restrictions-sur" contenteditable="true" spellcheck="false" default="Diet Restrictions"></span>.</span>
+                    </select><span class="choice">.</span><span class="choice">, they need to avoid&nbsp;<span id="guest-restrictions-sur" contenteditable="true" spellcheck="false" autocomplete="off" default="Diet Restrictions"></span>.</span>
                     <br/>
                     <br/>
                 </fieldset>
                 <span class="bridesmaid">Do you have a song suggestion?</span>
-                <br/><span id="song-sur" contenteditable="true" spellcheck="false" default="Song by Artist"></span>
+                <br/><span id="song-sur" contenteditable="true" spellcheck="false" autocomplete="off" default="Song by Artist"></span>
             </fieldset>
         </fieldset>
     </div>
 
     <div class="field-wrapper">
         <h4>Thank you for responding!</h4>
-        <p>We look forward to celebrating our special day with you!</p>
+        <p>We look forward to celebrating our special day with<!--without--> you!</p>
     </div>
 
     <div class="submit-button">

@@ -1,17 +1,49 @@
 // ------------------------------------------------------------------
+// Column'd Content from Markdown
+// ------------------------------------------------------------------
+swiper = $( ".swipe-text" ) //no swiping!
+swiper.children( "h4" ).each(function() {
+    //add div at dom
+    //move h4 and following p to div
+    h4 = $( this ).before( "<div></div>");
+    section = h4.prev().addClass( "keep-together" );
+    p = h4.nextUntil( "h4" ).filter( "p" );
+    div = h4.nextUntil("h4").filter( "div" )
+    section.append( h4 ).append( p ).append( div );
+});
+
+swiper.each(function() {
+    swipe = $( this );
+    swipe.clone().removeClass("swipe-text").addClass("swipe-text-shadow").insertBefore( swipe );
+});
+
+// ------------------------------------------------------------------
 // Pane Opening and Closing
 // ------------------------------------------------------------------
 var rsvp = $( " #link-rsvp " );
 let resizeTimer;
 
 $( window ).resize(function() {
-    slider = $( ".slider" );
-    slider.addClass("resize-animation-stopper");
+    //slider = $( ".slider" ); // Possible way of solving the transition problem on resize
+    //slider.addClass("resize-animation-stopper");
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-        slider.removeClass("resize-animation-stopper");
+        //slider.removeClass("resize-animation-stopper");
+        $( ".swipe-text-shadow" ).each(function() {
+            shadow = $( this );
+            swipe = shadow.parent();
+            if (shadow.height() > swipe.height()) {
+                swipe.addClass( "swipe-on" );
+                shadow.addClass( "snap" );
+            } else {
+                swipe.removeClass( "swipe-on" );
+                shadow.removeClass( "snap" );
+            }
+        });
     }, 100);
 });
+
+$( window ).resize();
 
 rsvp.click(function() {
     nav = $( "#navigation-bar" );
@@ -41,7 +73,7 @@ var scrolling = {
     behavior: "smooth"
 };
 
-$( "#parallax-container" ).scrollTop(0);
+//$( "#parallax-container" ).scrollTop(0);
 $(".background div[snap]" ).addClass("snap");
 
 links = $( ".link" );

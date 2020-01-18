@@ -3,7 +3,7 @@ name: footer
 gap: 100vh
 empty: false
 ---
-+ &copy; 2019 Anna Shi & Daniel Weng
++ &copy; 2020 Anna Shi & Daniel Weng
 
 + [\#wengshisaidyes](https://www.instagram.com/explore/tags/wengshisaidyes/)
 

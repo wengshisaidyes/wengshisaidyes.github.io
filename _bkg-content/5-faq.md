@@ -2,11 +2,11 @@
 name: faq
 gap: 0
 empty: false
+header: FAQ
+text: true
 # Make sure to add 2 spaces at the end of the last line in each answer
 # Okay nevermind, Kramdown or something seems to be removing whitespace?
 ---
-## FAQ
-
 #### What is the dress code?
 The dress code is semi-formal.  
 

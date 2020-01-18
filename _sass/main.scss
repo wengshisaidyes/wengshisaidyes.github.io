@@ -67,11 +67,6 @@ h4 {
 //     height: $nav-bottom-height;
 // }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: row;
-}
-
 .background {
     /*position: absolute;
     top: 0;
@@ -84,22 +79,36 @@ h4 {
         margin-right: $outside-padding;
         height: 100vh - $nav-height;
     }
-
 }
 
 .snap {
     scroll-snap-align: start;
 }
 
+// this class is used within .foreground and .background!
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
 .placeholder {
     flex-grow: 0;
 }
 
-.content {
-    flex: 1 1 0;
+.content, .swipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     text-align: left;
-    margin-left: $nav-padding - $outside-padding;
-    margin-right: $outside-padding;
+}
+
+.content, .swipe, .swipe-text {
+    flex: 1 1 0;
+}
+
+.content {
+    padding-left: $nav-padding - $outside-padding;
+    padding-right: $outside-padding;
     overflow: hidden;
 
     h2 {
@@ -122,13 +131,49 @@ h4 {
 }
 
 .placeholder + .content {
-    margin-left: $outside-padding;
-    margin-right: $nav-padding - $outside-padding;
+    padding-left: $outside-padding;
+    padding-right: $nav-padding - $outside-padding;
+}
+
+.swipe {
+    overflow: hidden;
+    position: relative;
+}
+
+.swipe-on {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+}
+
+.swipe-text {
+    width: 200vw - 3 * $nav-padding;
+    column-width: 100vw - 2 * $nav-padding;
+    column-gap: $nav-padding;
+    column-fill: auto;
+    overflow: hidden;
+}
+
+.swipe-text-shadow {
+    visibility: hidden;
+    position: absolute;
+}
+
+.swipe-text-shadow.snap::after {
+    position: absolute;
+    content: "";
+    left: 100vw - $nav-padding;
+    width: 1em;
+    height: 1em;
+    background-color: green;
+    scroll-snap-align: start;
+}
+
+.keep-together {
+    display: inline-block;
 }
 
 .schedule {
     display: flex;
-    margin-top: 1em;
     color: $col-anna;
     font-weight: 300;
 }
@@ -151,7 +196,7 @@ h4 {
     height: 100vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    overscroll-behavior: none;
+    //overscroll-behavior: none;
     perspective: 8px;
     perspective-origin: center;
     //perspective-origin: bottom right;
@@ -165,7 +210,7 @@ h4 {
         width: 30%;
     }
 
-    .content {
+    .swipe {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -199,6 +244,10 @@ h4 {
 
     .content {
         padding-top: 1em;
+
+        .keep-together p {
+            margin-bottom: 0.25em;
+        }
     }
 
     .placeholder {

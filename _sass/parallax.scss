@@ -8,16 +8,12 @@
     position: absolute;
     width: 100%;
     transform-origin: center 50vh;
+    pointer-events: none;
     //transform-origin: bottom right; //this might fix the chrome over-scroll problem
-
-    // img {
-    //     position: absolute;
-    // }
 }
 
 .depth-1 {
     transform: translateZ(1px) scale(0.875);
-    z-index: 20;
 }
 
 .depth-2 {
@@ -30,7 +26,6 @@
 
 .depth-4 {
     transform: translateZ(4px) scale(0.5);
-    z-index: 10;
 }
 
 .foreground-image {
@@ -160,6 +155,7 @@
 #img-mapbox {
     height: 100vh - $nav-height - $nav-gap;
     width: 100%;
+    pointer-events: all;
 }
 
 #img-125 {

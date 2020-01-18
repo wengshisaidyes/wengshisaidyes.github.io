@@ -15,26 +15,25 @@
                     {% unless side %}
                         {% assign side = "left" %}
                     {% endunless %}
-                    {% case side %}
-                        {% when "left" %}
-                            <div class="placeholder"></div>
-                            <div class="content">
-                                {{ bkg.content | markdownify }}
-                            </div>
-                        {% when "right" %}
-                            <div class="content">
-                                {{ bkg.content | markdownify }}
-                            </div>
-                            <div class="placeholder"></div>
-                        {% else %}
-                            {% if bkg.name == "footer" %}
-                                <div id="footer">
+                    {% if bkg.name == "footer" %}
+                        <div id="footer">
+                            {{ bkg.content | markdownify }}
+                        </div>
+                    {% else %}
+                        {% if side == "left" %}<div class="placeholder"></div>{% endif %}
+                        <div class="content">
+                            {% if bkg.header %}<h2>{{ bkg.header }}</h2>{% endif %}
+                            <div class="swipe">
+                                {% if bkg.text %}
+                                    <div class="swipe-text">{{ bkg.content | markdownify }}</div>
+                                {% else %}
                                     {{ bkg.content | markdownify }}
-                                </div>
-                            {% endif %}
-                    {% endcase %}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if side == "right" %}<div class="placeholder"></div>{% endif %}
+                    {% endif %}
                 </div>
-                <!--<div class="gap nav-spacer-bottom"></div>-->
             </div>
         {% endif %}
     {% endfor %}

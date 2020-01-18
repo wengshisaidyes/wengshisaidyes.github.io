@@ -1,7 +1,11 @@
 // We handle changing viewport here
 
 #parallax-container, #navigation-bar, body, #rsvp-pane {
-    min-width: 340px;
+    min-width: 350px;
+}
+
+.swipe-text {
+    min-width: 630px;
 }
 
 @media (max-width: 1000px) {
@@ -29,6 +33,12 @@
 
         #content-footer {
             height: 100vh - $nav-top-height;
+        }
+
+        .content {
+            padding-left: $nav-padding - $outside-padding;
+            padding-right: $nav-padding - $outside-padding;
+            padding-bottom: 2 * $outside-padding; //Approx the url bar height
         }
 
     }
@@ -248,14 +258,28 @@
     }
 }
 
-@media (max-width: 400px) { //Second date/time squeeze and faq overflow
+@media (max-width: 400px) { //Second date/time squeeze and map squeeze
     #content-when {
         font-size: 1.75em;
     }
+
     .map-link p {
         font-size: 0.7em; // Good till w: 355px
     }
-    #content-faq {
-        font-size: 0.95em;
-    }
 }
+
+
+// Rules for column'd text expansion
+// @media (max-width: 484px), (max-height: 650px) {
+//     #content-faq .swipe {
+//         overflow-x: scroll;
+//     }
+// }
+//
+// @media (max-width: 810px) and (max-height: 478px),
+//        (max-width: 706px) and (max-height: 493px),
+//        (max-width: 543px) and (max-height: 487px) {
+//     #content-hotel .swipe {
+//         //overflow-x: scroll;
+//     }
+// }
