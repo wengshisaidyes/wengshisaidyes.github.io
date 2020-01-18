@@ -38,7 +38,7 @@
         .content {
             padding-left: $nav-padding - $outside-padding;
             padding-right: $nav-padding - $outside-padding;
-            padding-bottom: 2 * $outside-padding; //Approx the url bar height
+            padding-bottom: $nav-top-height; //Approx the url bar height
         }
 
     }

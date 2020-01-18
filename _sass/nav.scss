@@ -14,8 +14,7 @@ $pane-width: 50vw;
     justify-content: flex-start;
     height: $nav-height;
     user-select: none;
-
-
+    pointer-events: none;
 }
 
 #title {
@@ -34,6 +33,7 @@ $pane-width: 50vw;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    pointer-events: all;
 
     span {
         position: relative;

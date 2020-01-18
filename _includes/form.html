@@ -7,7 +7,7 @@
             <span>Hello, my name is&nbsp;</span><span id="name-sur" contenteditable="true" spellcheck="false" autocomplete="off" default="Your Name"></span><span>&nbsp;and I</span>
             <select id="accept-sur" class="smoke-bomb" autocomplete="off">
                 <option selected="selected">am happy to accept</option>
-                <option>must decline</option>
+                <option>regretfully decline</option>
             </select><span>&nbsp;the invitation.</span>
             <br/>
             <br/>
@@ -64,9 +64,14 @@
         </fieldset>
     </div>
 
-    <div class="field-wrapper">
+    <div id="form-accept" class="field-wrapper">
         <h4>Thank you for responding!</h4>
-        <p>We look forward to celebrating our special day with<!--without--> you!</p>
+        <p>We look forward to celebrating our special day with you!</p>
+    </div>
+
+    <div id="form-decline" class="field-wrapper">
+        <h4>Thank you for responding!</h4>
+        <p>Sorry you can't come, hopefully we see you soon!</p>
     </div>
 
     <div class="submit-button">

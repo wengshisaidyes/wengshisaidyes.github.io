@@ -45,27 +45,6 @@ $( window ).resize(function() {
 
 $( window ).resize();
 
-rsvp.click(function() {
-    nav = $( "#navigation-bar" );
-    parallax = $( "#parallax-container" );
-    pane = $( "#rsvp-pane" );
-
-    // Change location
-    nav.toggleClass( "slide" );
-    parallax.toggleClass( "slide" );
-    pane.toggleClass( "slide-pane" );
-
-    // Set correct form state (entering/sent)
-    $( "#submit-form" ).val('✉ Send').prop("disabled", false);
-    if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ) && !pane.hasClass( "slide-pane" ))  {
-        //im too lazy to do the right logic
-    } else {
-        $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
-    }
-
-    rsvp.toggleClass( "rolled-over" );
-});
-
 // ------------------------------------------------------------------
 // Scroll handling
 // ------------------------------------------------------------------
@@ -126,6 +105,27 @@ container.scroll(function() {
 var ch = $( "#__ch" ).width();
 var $form = $(" form#rsvp "),
   url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
+
+  rsvp.click(function() {
+      var nav = $( "#navigation-bar" );
+      var parallax = $( "#parallax-container" );
+      var pane = $( "#rsvp-pane" );
+
+      // Change location
+      nav.toggleClass( "slide" );
+      parallax.toggleClass( "slide" );
+      pane.toggleClass( "slide-pane" );
+
+      // Set correct form state (entering/sent)
+      $( "#submit-form" ).val('✉ Send').prop("disabled", false);
+      if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ))  {
+          $( "#form-wrapper").removeClass( "fieldset-hidden-in-the-html" );
+      }
+
+      $( "#form-accept" ).addClass( "fieldset-hidden-in-the-html" );
+      $( "#form-decline" ).addClass( "fieldset-hidden-in-the-html" );
+      rsvp.toggleClass( "rolled-over" );
+  });
 
 // Add default text (we dont have placeholder for spans); all dom elements are loaded here (theoretically?)
 $( "span[contenteditable='true']" ).each( function() {
@@ -242,7 +242,9 @@ $( "option.select-default" ).prop("hidden", true);
 // Form event
 $( "#submit-form" ).on('click', function(e) {
     e.preventDefault();
-    $( "#submit-form" ).prop("disabled", true);
+    submit = $( "#submit-form" );
+    submit.prop("disabled", true);
+    var form = $( "#form-wrapper" );
 
     // Set the values of the submission input set
     submission = $( "#shadow-realm" ).children( "input" );
@@ -258,12 +260,12 @@ $( "#submit-form" ).on('click', function(e) {
                 value = source.val();
                 defaultText = source.children("option[selected=selected]").text();
                 // We don't need the rest of the entries if declined
-                if (value == "must decline") {
+                if (value == "regretfully decline") { //Checking exact value of select is not robust!
                     input.val( false );
                     return false;
                 }
                 if (value == defaultText) {
-                    value == "am happy to accept" ? value = true : value = "";
+                    value == "am happy to accept" ? value = true : value = ""; // Wierd case where we want to send default except in this case
                 } else {
                     value == "Yes" ? value = true
                   : value == "No" ? value = false
@@ -294,21 +296,25 @@ $( "#submit-form" ).on('click', function(e) {
     });
 
     if (required_flag) {
-        $( "#submit-form" ).val(':(').prop("disabled", false).addClass("required"); // Get back to work!
+        submit.val('Try Again :(').prop("disabled", false).addClass("required"); // Get back to work!
     } else {
-        $( "#submit-form" ).val('...');
-        $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
+        submit.val('...');
+        form.addClass( "fieldset-lurking" );
         var jqxhr = $.ajax({
             url: url,
             method: "GET",
             dataType: "json",
             data: $form.serializeObject()
         }).done( function() {
-            // this does not validate success!
-            $( ".field-wrapper" ).toggleClass( "fieldset-hidden-in-the-html" );
-            $( "#form-wrapper" ).toggleClass( "fieldset-lurking" );
+            submit.val('✔');
+            form.addClass( "fieldset-hidden-in-the-html" );
+            if ($( "#accept" ).val() == "false") {
+                $( "#form-decline" ).removeClass( "fieldset-hidden-in-the-html" );
+            } else {
+                $( "#form-accept" ).removeClass( "fieldset-hidden-in-the-html" );
+            }
+            form.removeClass( "fieldset-lurking" );
             //$( "#rsvp fieldset" ).prop("disabled", false);
-            $( "#submit-form" ).val('✔');
         });
     }
 });
