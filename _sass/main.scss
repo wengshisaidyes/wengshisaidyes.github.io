@@ -1,7 +1,4 @@
 $base-size:         16px;
-//  width    px
-//  1280     17
-//   400     14
 $outside-padding:   3vw;
 $nav-padding:       5vw;
 $nav-gap:           5vh;
@@ -11,7 +8,6 @@ $nav-bottom-height: 1.5*$nav-gap;
 $min-width:         300px;
 $footer-height:      2*$nav-gap;
 $footer-height-bump: 3*$nav-gap;
-
 
 * {
     box-sizing: border-box;
@@ -162,9 +158,7 @@ h4 {
     position: absolute;
     content: "";
     left: 100vw - $nav-padding;
-    width: 1em;
-    height: 1em;
-    background-color: green;
+    top: 0;
     scroll-snap-align: start;
 }
 
