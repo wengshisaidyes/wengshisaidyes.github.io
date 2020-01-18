@@ -55,13 +55,18 @@ em {
         padding-right: 1em;
         border: 1px solid $col-highlight;//-diff;
         transition: background-color 0.3s;
+        background-color: rgba($bg1, 0.6);
+    }
+
+    #link-rsvp.highlight {
+        background-color: $col-highlight;//-diff;
     }
 
     #link-rsvp:hover {
         background-color: $col-highlight;//-diff;
     }
 
-    .rolled-over {
+    #link-rsvp.rolled-over {
         color: $bg1;
         background-color: $col-anna;//-diff;
     }

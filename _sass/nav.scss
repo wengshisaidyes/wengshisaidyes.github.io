@@ -43,7 +43,14 @@ $pane-width: 50vw;
         justify-content: center;
         align-items: center;
         transition: border-color .5s;
+        border-color: rgba($bg1, 0);
         cursor: pointer;
+    }
+
+    .scroll-to span {
+        color: $col-highlight;//-diff;
+        border-bottom: 1px solid $col-highlight;//-diff;
+        border-color: $col-highlight;
     }
 
     .link {
@@ -78,13 +85,4 @@ $pane-width: 50vw;
 
 .slide-pane {
     left: 100vw - $pane-width !important;
-}
-
-.scroll-to span {
-    color: $col-highlight;//-diff;
-    border-bottom: 1px solid $col-highlight;//-diff;
-}
-
-.highlight {
-    background-color: $col-highlight;//-diff;
 }
