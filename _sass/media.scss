@@ -248,6 +248,8 @@
 @media (max-width: 625px) { //First date/time squeeze point
     #content-when {
 
+        font-size: 4vh;
+
         em {
             display: block;
             text-align: center;
@@ -283,11 +285,7 @@
     }
 }
 
-@media (max-width: 400px) { //Second date/time squeeze and map squeeze
-    #content-when {
-        font-size: 1.75em;
-    }
-
+@media (max-width: 400px) { //Map-link second squeeze
     .map-link p {
         font-size: 0.7em; // Good till w: 355px
     }
