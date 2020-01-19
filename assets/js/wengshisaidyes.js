@@ -310,7 +310,7 @@ $( "#submit-form" ).on('click', function(e) {
     });
 
     if (required_flag) {
-        submit.val('✉ Try Again').prop("disabled", false).addClass("required"); // Get back to work!
+        submit.val('✉ :(').prop("disabled", false).addClass("required"); // Get back to work!
         if (submit.next(".retry-message").length == 0) {
             submit.after("<span>Please fill in the missing fields</span>").next().addClass("retry-message");
         }
