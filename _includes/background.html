@@ -5,16 +5,16 @@
         {% else %}
             <div snap="{{ bkg.name }}" id="snap-{{ bkg.name }}">
                 <div class="gap nav-spacer-top"></div>
-                <div class="content-wrapper" id="content-{{ bkg.name }}">
-                    {% for parallax in site.data.parallax %}
-                        {% if parallax.name == bkg.name %}
-                            {% assign side = parallax.type %}
-                            {% break %}
-                        {% endif %}
-                    {% endfor %}
-                    {% unless side %}
-                        {% assign side = "left" %}
-                    {% endunless %}
+                {% for parallax in site.data.parallax %}
+                    {% if parallax.name == bkg.name %}
+                        {% assign side = parallax.type %}
+                        {% break %}
+                    {% endif %}
+                {% endfor %}
+                {% unless side %}
+                    {% assign side = "left" %}
+                {% endunless %}
+                <div class="content-wrapper {{ side }}" id="content-{{ bkg.name }}">
                     {% if bkg.name == "footer" %}
                         <div id="footer">
                             {{ bkg.content | markdownify }}

@@ -8,6 +8,9 @@ $nav-bottom-height: 1.5*$nav-gap;
 $min-width:         300px;
 $footer-height:      2*$nav-gap;
 $footer-height-bump: 3*$nav-gap;
+$column-bleed:      $nav-padding;
+$column-gap:        2*$nav-padding;
+$column-width:      100vw - $column-gap - $column-bleed - $nav-padding;
 
 * {
     box-sizing: border-box;
@@ -71,9 +74,13 @@ h4 {
     transform: translateZ(0px);*/
 
     .content-wrapper {
-        margin-left: $outside-padding;
-        margin-right: $outside-padding;
+        //margin-left: $outside-padding;
+        //margin-right: $outside-padding;
         height: 100vh - $nav-height;
+    }
+
+    .content-wrapper:not(#content-footer) {
+        padding-bottom: $nav-gap;
     }
 }
 
@@ -88,10 +95,12 @@ h4 {
 }
 
 .placeholder {
+    // margin-left: $outside-padding;
+    // margin-right: $outside-padding;
     flex-grow: 0;
 }
 
-.content, .swipe {
+.content {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -103,9 +112,12 @@ h4 {
 }
 
 .content {
-    padding-left: $nav-padding - $outside-padding;
+    padding-left: $outside-padding;
     padding-right: $outside-padding;
-    overflow: hidden;
+    // padding-left: $nav-padding - $outside-padding;
+    // padding-right: $outside-padding;
+    overflow-y: hidden;
+    overflow-x: visible;
 
     h2 {
         text-transform: capitalize;
@@ -126,26 +138,12 @@ h4 {
     }
 }
 
-.placeholder + .content {
-    padding-left: $outside-padding;
-    padding-right: $nav-padding - $outside-padding;
-}
+// .placeholder + .content {
+//     padding-left: $outside-padding;
+//     padding-right: $nav-padding - $outside-padding;
+// }
 
 .swipe {
-    overflow: hidden;
-    position: relative;
-}
-
-.swipe-on {
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
-}
-
-.swipe-text {
-    width: 200vw - 3 * $nav-padding;
-    column-width: 100vw - 2 * $nav-padding;
-    column-gap: $nav-padding;
-    column-fill: auto;
     overflow: hidden;
 }
 
@@ -157,7 +155,7 @@ h4 {
 .swipe-text-shadow.snap::after {
     position: absolute;
     content: "";
-    left: 100vw - $nav-padding;
+    left: $column-width + $nav-padding;
     top: 0;
     scroll-snap-align: start;
 }
@@ -236,13 +234,9 @@ h4 {
 
 #content-hotel {
 
-    .content {
-        padding-top: 1em;
-
-        .keep-together p {
+    .keep-together p {
             margin-bottom: 0.25em;
         }
-    }
 
     .placeholder {
         width: 50%;
@@ -255,10 +249,6 @@ h4 {
 }
 
 #content-faq {
-
-    .content {
-        padding-top: 1em;
-    }
 
     .placeholder {
         width: 30%;

@@ -47,24 +47,31 @@
     //display: flex;
 }
 
-%foreground-layout {
-    padding-left: $outside-padding;
-    padding-right: $outside-padding;
-}
+// %foreground-layout {
+//     // padding-left: $outside-padding;
+//     // padding-right: $outside-padding;
+// }
 
 .left {
-    @extend %foreground-layout;
     justify-content: flex-start;
+    .placeholder, .foreground-image {
+        margin-left: $outside-padding;
+    }
 }
 
 .center {
-    @extend %foreground-layout;
     justify-content: center;
+    .placeholder, .foreground-image {
+        margin-left: $outside-padding;
+        margin-right: $outside-padding;
+    }
 }
 
 .right {
-    @extend %foreground-layout;
     justify-content: flex-end;
+    .placeholder, .foreground-image {
+        margin-right: $outside-padding;
+    }
 }
 
 .buffer {

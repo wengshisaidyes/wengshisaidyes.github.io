@@ -4,9 +4,9 @@
     min-width: 350px;
 }
 
-.swipe-text {
-    min-width: 630px;
-}
+// .swipe-text {
+//     min-width: 630px;
+// }
 
 @media (max-width: 1000px) {
     #subtitle {
@@ -26,19 +26,49 @@
 
     .background {
 
-        .content-wrapper:not(#content-footer) {
-            margin-bottom: $nav-bottom-height;
-            height: 100vh - $nav-top-height - $nav-bottom-height;
-        }
-
-        #content-footer {
+        .content-wrapper {
+            //margin-bottom: $nav-bottom-height;
             height: 100vh - $nav-top-height;
+            padding-bottom: $nav-top-height + $nav-bottom-height; //Approx the url bar height
         }
 
         .content {
-            padding-left: $nav-padding - $outside-padding;
-            padding-right: $nav-padding - $outside-padding;
-            padding-bottom: $nav-top-height; //Approx the url bar height
+            // padding-left: $nav-padding - $outside-padding;
+            // padding-right: $nav-padding - $outside-padding;
+            padding-left: 0;
+            padding-right: 0; // We are moving this padding to the swipe to get the scroll hint
+            // This means there is currently no hint in desktop-mode
+
+            h2 {
+                margin-left: $nav-padding;
+            }
+        }
+
+        .swipe-on {
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            //width: 100vw - $nav-padding;
+
+            .swipe-text { // This is here so that we dont see overflow before columns
+                width: 2*$column-width + $column-gap;
+                // swipe-on on .swipe gives requisite width
+                column-width: $column-width;
+                column-gap: $column-gap;
+                column-fill: auto;
+                column-rule: 1px dotted $col-highlight;
+                overflow: hidden;
+                height: 100%;
+            }
+        }
+
+        .swipe-text, {
+            margin-left: $nav-padding; // this has to be a margin; columns break with padding?
+            margin-right: $nav-padding;
+        }
+
+        .swipe-text-shadow {
+            padding-left: $nav-padding;
+            padding-right: $nav-padding;
         }
 
     }
@@ -49,8 +79,8 @@
             display: none;
         }
 
-        .center {
-            padding: 0;
+        .center .foreground-image {
+            margin: 0;
         }
     }
 
@@ -72,12 +102,11 @@
     }
 
     #img-57 {
-        height: 100vh - $nav-top-height - $footer-height-bump - $nav-bottom-height;
+        height: 100vh - 2*$nav-top-height - $footer-height-bump - $nav-bottom-height;
     }
 
     #footer {
         height: $footer-height-bump;
-        margin-bottom: $nav-bottom-height;
 
         ul {
             flex-direction: column;
@@ -267,7 +296,6 @@
         font-size: 0.7em; // Good till w: 355px
     }
 }
-
 
 // Rules for column'd text expansion
 // @media (max-width: 484px), (max-height: 650px) {
