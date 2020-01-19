@@ -106,25 +106,36 @@ var ch = $( "#__ch" ).width();
 var $form = $(" form#rsvp "),
   url = 'https://script.google.com/macros/s/AKfycbxriZbi9EzPKoKhFI2wzsQDS93Jn7CqIIiNMFhQ1Y8dbrLl-o4/exec'
 
-  rsvp.click(function() {
-      var nav = $( "#navigation-bar" );
-      var parallax = $( "#parallax-container" );
-      var pane = $( "#rsvp-pane" );
+var stillRequired = function() {
+    if ($( "#form-wrapper .required" ).length == 0) {
+        $( "#submit-form" ).val("✉ Send").removeClass("required").next(".retry-message").remove();
+        return false;
+    } else {
+        return true;
+    }
+}
 
-      // Change location
-      nav.toggleClass( "slide" );
-      parallax.toggleClass( "slide" );
-      pane.toggleClass( "slide-pane" );
+rsvp.click(function() {
+    var nav = $( "#navigation-bar" );
+    var parallax = $( "#parallax-container" );
+    var pane = $( "#rsvp-pane" );
 
-      // Set correct form state (entering/sent)
-      $( "#submit-form" ).val('✉ Send').prop("disabled", false);
-      if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ))  {
-          $( "#form-wrapper").removeClass( "fieldset-hidden-in-the-html" );
-      }
+    // Change location
+    nav.toggleClass( "slide" );
+    parallax.toggleClass( "slide" );
+    pane.toggleClass( "slide-pane" );
 
-      $( "#form-accept" ).addClass( "fieldset-hidden-in-the-html" );
-      $( "#form-decline" ).addClass( "fieldset-hidden-in-the-html" );
-      rsvp.toggleClass( "rolled-over" );
+    // Set correct form state (entering/sent)
+    $( "#submit-form" ).prop("disabled", false);
+    stillRequired();
+
+    if ($( "#form-wrapper").hasClass( "fieldset-hidden-in-the-html" ))  {
+      $( "#form-wrapper").removeClass( "fieldset-hidden-in-the-html" );
+    }
+
+    $( "#form-accept" ).addClass( "fieldset-hidden-in-the-html" );
+    $( "#form-decline" ).addClass( "fieldset-hidden-in-the-html" );
+    rsvp.toggleClass( "rolled-over" );
   });
 
 // Add default text (we dont have placeholder for spans); all dom elements are loaded here (theoretically?)
@@ -182,6 +193,7 @@ $( "span[contenteditable='true']" ).keyup(function(e) {
         input.addClass( "empty" );
     } else {
         input.removeClass( "empty" ).removeClass("required");
+        stillRequired();
     }
 });
 
@@ -203,6 +215,8 @@ $( "select" ).change(function() {
     select = $( this );
     realm = $( "#shadow-realm" );
     option = select.children( "option:selected" );
+    select.removeClass("required");
+    stillRequired();
 
     shadow = $( "<span>" ).html(option.text()).appendTo( realm );
     width = shadow.width();
@@ -245,16 +259,19 @@ $( "#submit-form" ).on('click', function(e) {
     submit = $( "#submit-form" );
     submit.prop("disabled", true);
     var form = $( "#form-wrapper" );
+    var required_flag = false;
 
     // Set the values of the submission input set
+    // We need code here to redirect the user to fill fields that arent full, or have bad inputs
+    // Input validation also needs to go here; currently just handles defaults
     submission = $( "#shadow-realm" ).children( "input" );
     submission.each( function() {
         var input = $( this );
         var source = $( "#" + input.attr("id") + "-sur" );
         var invisible_flag = source.parentsUntil( "#form-wrapper" ).is( ".fieldset-hidden-in-the-html" );
-        var not_chosen_flag = source.parentsUntil( "fieldset" ).is( ".chosen" ) || source.parentsUntil( "fieldset" ).length == 0;
+        var chosen_flag = source.parentsUntil( "fieldset" ).is( ".chosen" ) || source.parentsUntil( "fieldset" ).length == 0;
         var value = "";
-        if (!invisible_flag && not_chosen_flag) {
+        if (!invisible_flag && chosen_flag) {
             var defaultText;
             if (source.is( "select" )) {
                 value = source.val();
@@ -265,8 +282,10 @@ $( "#submit-form" ).on('click', function(e) {
                     return false;
                 }
                 if (value == defaultText) {
+                    // This is either set back to "" or is default text we wish to send
                     value == "am happy to accept" ? value = true : value = ""; // Wierd case where we want to send default except in this case
                 } else {
+                    // Some inputs require translating for readability in google sheets
                     value == "Yes" ? value = true
                   : value == "No" ? value = false
                   : value = value;
@@ -275,28 +294,26 @@ $( "#submit-form" ).on('click', function(e) {
                 value = source.text();
                 defaultText = source.attr("default");
                 if (value == defaultText) {
+                    // This is either set back to "" or is default text we wish to send
                     value = "";
                 } else if (value.charAt(0) == '=') {
+                    // Need to check if a user attempts to send a function to google sheets
                     value = "FUNCTION ATTEMPT";
                 }
+            }
+            if (input.prop("required") && value == "") {
+                source.addClass("required");
+                required_flag = true;
             }
         }
         input.val( value );
     });
 
-    // We need code here to redirect the user to fill fields that arent full, or have bad inputs
-    // Input validation also needs to go here; currently the above just handles defaults
-    var required_flag = false;
-    submission.filter( "input[required]" ).each(function() {
-        input = $( this );
-        if (input.val() == "") {
-            $( "#" + input.attr("id") + "-sur" ).addClass("required");
-            required_flag = true;
-        }
-    });
-
     if (required_flag) {
-        submit.val('Try Again :(').prop("disabled", false).addClass("required"); // Get back to work!
+        submit.val('✉ Try Again').prop("disabled", false).addClass("required"); // Get back to work!
+        if (submit.next(".retry-message").length == 0) {
+            submit.after("<span>Please fill in the missing fields</span>").next().addClass("retry-message");
+        }
     } else {
         submit.val('...');
         form.addClass( "fieldset-lurking" );

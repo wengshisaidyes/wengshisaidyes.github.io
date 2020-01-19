@@ -1,6 +1,7 @@
 $col-form-bg: $col-anna;
 $col-form: $bg1;
 $col-form-input: $col-highlight;
+$col-required: $col-dan;
 //ed254e
 
 #rsvp-pane {
@@ -73,11 +74,6 @@ $col-form-input: $col-highlight;
         color: rgba($col-form-input, 0.6);
     }
 
-    span[edited="false"].required {
-        color: purple;
-        border-color: purple;
-    }
-
     .empty { // For the editable span above, needs to not disappear
         padding-right: 4ch !important; // this is not an ideal use of important!
     }
@@ -95,7 +91,7 @@ $col-form-input: $col-highlight;
         border: 1px solid $col-form-input;
         background-color: $col-form-bg;
         color: $col-form;
-        height: 2em;
+        height: $nav-height/3;
         padding-left: 1em;
         padding-right: 1em;
         transition: background-color 0.3s;
@@ -111,6 +107,35 @@ $col-form-input: $col-highlight;
     input[type="submit"]:active, .close:active {
         opacity: 0.6;
     }
+
+    %required {
+        color: $col-required;
+        text-shadow: 0 0 4px;
+    }
+
+    .retry-message {
+        @extend %required;
+        font-size: 0.8em;
+        margin-left: 1em;
+        margin-right: 2*$outside-padding;
+        padding-right: $nav-height/3;
+        line-height: 1em;
+    }
+
+    span.required, select.required {
+        @extend %required;
+        border-color: $col-required;
+    }
+
+    input[type="submit"].required {
+        border-color: $col-required;
+    }
+
+    input[type="submit"].required:hover {
+        background-color: $col-required;
+    }
+
+
 }
 
 .choice {
@@ -188,8 +213,8 @@ fieldset {
     -webkit-appearance: none;
     user-select: none;
     cursor: pointer;
-    width: 2em;
-    height: 2em;
+    width: $nav-height/3;
+    height: $nav-height/3;
 }
 
 .close::before, .close::after {
@@ -198,7 +223,7 @@ fieldset {
     background-color: $col-form-input;
     width: 0.1em;
     left: 1em - 0.05em;
-    height: 2em;
+    height: $nav-height/3;
     border-radius: 1px;
     transition: background-color 0.3s;
 }

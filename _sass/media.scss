@@ -186,6 +186,10 @@
         display: inline-block;
     }
 
+    .retry-message {
+        padding-right: $nav-top-height/3;
+    }
+
     .submit-button {
         left: 2*$outside-padding;
         height: $nav-top-height;
