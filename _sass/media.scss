@@ -4,10 +4,6 @@
     min-width: 350px;
 }
 
-// .swipe-text {
-//     min-width: 630px;
-// }
-
 @media (max-width: 1000px) {
     #subtitle {
         display: none;
@@ -26,7 +22,7 @@
 
     .background {
 
-        .content-wrapper {
+        .content-wrapper, #content-footer {
             //margin-bottom: $nav-bottom-height;
             height: 100vh - $nav-top-height;
             padding-bottom: $nav-top-height + $nav-bottom-height; //Approx the url bar height

@@ -67,19 +67,11 @@ h4 {
 // }
 
 .background {
-    /*position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    transform: translateZ(0px);*/
 
     .content-wrapper {
         //margin-left: $outside-padding;
         //margin-right: $outside-padding;
         height: 100vh - $nav-height;
-    }
-
-    .content-wrapper:not(#content-footer) {
         padding-bottom: $nav-gap;
     }
 }
@@ -88,7 +80,6 @@ h4 {
     scroll-snap-align: start;
 }
 
-// this class is used within .foreground and .background!
 .content-wrapper {
     display: flex;
     flex-direction: row;
@@ -137,11 +128,6 @@ h4 {
         margin-bottom: 0.75em;
     }
 }
-
-// .placeholder + .content {
-//     padding-left: $outside-padding;
-//     padding-right: $nav-padding - $outside-padding;
-// }
 
 .swipe {
     overflow: hidden;
@@ -264,6 +250,7 @@ h4 {
     align-items: flex-end;
     margin-left: 0;
     margin-right: 0;
+    padding-bottom: 0;
 
     ~.nav-spacer-bottom {
         background-color: $col-anna;
