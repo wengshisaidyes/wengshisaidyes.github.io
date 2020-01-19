@@ -138,13 +138,13 @@ h4 {
     position: absolute;
 }
 
-.swipe-text-shadow.snap::after {
-    position: absolute;
-    content: "";
-    left: $column-width + $nav-padding;
-    top: 0;
-    scroll-snap-align: start;
-}
+// .swipe-text-shadow.snap::after {
+//     position: absolute;
+//     content: "";
+//     left: $column-width + $nav-padding;
+//     top: 0;
+//     scroll-snap-align: start;
+// }
 
 .keep-together {
     display: inline-block;
