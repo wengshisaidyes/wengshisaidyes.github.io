@@ -142,16 +142,14 @@ $col-required: $col-dan;
     display: inline-block;
     width: 0;
     line-height: 0;
-    opacity: 0%;
-    transition: none;
+    opacity: 0;
 }
 
 .chosen {
     display: inline;
     width: auto;
     line-height: inherit;
-    position: relative;
-    opacity: 100%;
+    opacity: 1;
     transition: opacity 0.3s;
 }
 
