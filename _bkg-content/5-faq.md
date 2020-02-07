@@ -4,11 +4,9 @@ gap: 0
 empty: false
 header: FAQ
 text: true
-# Make sure to add 2 spaces at the end of the last line in each answer
-# Okay nevermind, Kramdown or something seems to be removing whitespace?
 ---
 #### What is the dress code?
-The dress code is semi-formal.  
+The dress code is semi-formal. We will be having an outdoor garden ceremony followed by a tented reception.
 
 #### Do you have a wedding registry?
 Your presence on our special day is all we ask. If you would like to give a gift to help us celebrate, we will be forever thankful for a contribution to our honeymoon fund. Thank you!  

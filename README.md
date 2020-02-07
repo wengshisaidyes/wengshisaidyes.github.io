@@ -1,4 +1,4 @@
-# WengShiSaidYes
+# Deep Library
 
-## Website for Dan & Anna's wedding!
-A simple website summarizing the event details and an RSVP form for our guests.
+## Introduction
+A personalized ebook reader for my own use.
