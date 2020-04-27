@@ -10,3 +10,5 @@ Don't worry, we are still getting married, so stay tuned for more updates as we 
 
 
 Stay safe and stay healthy.
+
+Anna & Daniel
