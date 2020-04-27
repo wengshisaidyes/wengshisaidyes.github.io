@@ -47,29 +47,6 @@ em {
 
 #navigation-bar {
     color: $col-text;//-diff;
-
-    #link-rsvp {
-        border-radius: 0.2em;
-        height: 2em;
-        padding-left: 1em;
-        padding-right: 1em;
-        border: 1px solid $col-highlight;//-diff;
-        transition: background-color 0.3s;
-        background-color: rgba($bg1, 0.6);
-    }
-
-    #link-rsvp.highlight {
-        background-color: $col-highlight;//-diff;
-    }
-
-    #link-rsvp:hover {
-        background-color: $col-highlight;//-diff;
-    }
-
-    #link-rsvp.rolled-over {
-        color: $bg1;
-        background-color: $col-anna;//-diff;
-    }
 }
 
 #parallax-container {
@@ -83,6 +60,47 @@ em {
 
 #content-footer {
     background: linear-gradient($bg1, $col-anna 50%);
+}
+
+.link-button {
+    border-radius: 0.2em;
+    height: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid $col-highlight;//-diff;
+    transition: background-color 0.3s;
+    background-color: rgba($bg1, 0.6);
+}
+
+.link-button.highlight {
+    background-color: $col-highlight;//-diff;
+}
+
+.link-button:hover {
+    background-color: $col-highlight;//-diff;
+}
+
+.link-button.rolled-over, .link-button:active {
+    color: $bg1;
+    background-color: $col-anna;//-diff;
+}
+
+.note {
+    width: 40ch;
+
+    h1 {
+        font-family: $f-hand;
+        color: $col-highlight;
+        font-size: 2em;
+        font-weight: 200;
+        margin-bottom: 0.25em;
+    }
+
+    p {
+        font-weight: 300;
+        margin-bottom: 1em;
+        margin-left: 1ch;
+    }
 }
 
 .background {

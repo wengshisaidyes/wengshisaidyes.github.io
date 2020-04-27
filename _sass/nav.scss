@@ -35,18 +35,6 @@ $pane-width: 50vw;
     align-items: center;
     pointer-events: all;
 
-    span {
-        position: relative;
-        text-transform: capitalize;
-        font-weight: 300;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        transition: border-color .5s;
-        border-color: rgba($bg1, 0);
-        cursor: pointer;
-    }
-
     .scroll-to span {
         color: $col-highlight;//-diff;
         border-bottom: 1px solid $col-highlight;//-diff;
@@ -62,14 +50,17 @@ $pane-width: 50vw;
     }
 }
 
-// #link-bar-background {
-//     display: none;
-//     position: fixed;
-//     bottom: 0;
-//     width: 100%;
-//     height: $nav-bottom-height;
-//     background-color: $bg1;
-// }
+#link-bar span, .link-button {
+    position: relative;
+    text-transform: capitalize;
+    font-weight: 300;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color .5s;
+    cursor: pointer;
+    user-select: none;
+}
 
 .overlay {
     position: fixed;

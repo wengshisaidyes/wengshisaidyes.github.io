@@ -339,3 +339,12 @@ $( "#submit-form" ).on('click', function(e) {
 $( '.close' ).click(function(e) {
     rsvp.click();
 });
+
+// ------------------------------------------------------------------
+// Notification handling
+// ------------------------------------------------------------------
+var clearNote = $( "#notification .link-button")
+
+clearNote.click(function(e) {
+    $( "#notification" ).addClass("note-cleared");
+});

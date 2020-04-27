@@ -165,6 +165,29 @@ h4 {
     //transition-duration: 0s !important;
 }
 
+#notification {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: $nav-height;
+    padding-left: $outside-padding;
+    padding-right: $outside-padding;
+    background-color: rgba(255, 255, 255, 1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    transition: opacity 0.5s;
+    //transition-timing-function: ease-out;
+}
+
+.note-cleared {
+    opacity: 0;
+    pointer-events: none;
+}
+
 #parallax-container {
     position: relative;
     left: 0;

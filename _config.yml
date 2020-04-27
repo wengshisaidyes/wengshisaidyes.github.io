@@ -1,6 +1,7 @@
 # the ol' config file
 collections:
-  bkg-content:
+  - bkg-content
+  - notifications
 
 kramdown:
   auto_ids: false

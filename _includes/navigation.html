@@ -4,7 +4,7 @@
         {% for item in site.data.navigation %}
             <div {% if item.link %}class="link" snap="{{ item.link }}"{% endif %}{% unless item.link %}id="rsvp-button"{% endunless %}>
                 {% if item.link %}<img src="assets/images/{{ item.link }}.svg">{% endif %}
-                <span id="link-{{ item.name | downcase }}">{{ item.name }}</span>
+                <span id="link-{{ item.name | downcase }}" {% unless item.link %}class="link-button"{% endunless %}>{{ item.name }}</span>
             </div>
         {% endfor %}
     </nav>

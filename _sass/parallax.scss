@@ -6,7 +6,7 @@
 
 .foreground {
     position: absolute;
-    width: 100%;
+    width: 100vw;
     transform-origin: center 50vh;
     pointer-events: none;
     //transform-origin: bottom right; //this might fix the chrome over-scroll problem
